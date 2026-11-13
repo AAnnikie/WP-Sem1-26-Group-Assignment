@@ -1,0 +1,47 @@
+<!--
+Zane Bryce 2404207 Wednesday 6-8pm
+
+
+
+
+CIT2011 Group Project: School Portal
+File Purpose: Simple HTML for the portal login page
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            School Portal | Login
+        </title>
+    </head>
+    <body>
+        <header>
+            <h1>
+                School Portal Login
+            </h1>
+        </header>
+        <main>
+            <form novalidate> <!--w3Schools HTML form novalidate Attribute. novalidate turns off the browser's own checks so login.js handles every rule-->
+                <div> <!-- Empty error label: login.js writes the in-place error message here -->
+                    <label for="username">Username</label>
+                    <input type="text" id="username">
+                    <p id="username-error" class="error"></p>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password">
+                    <p id="password-error" class="error"></p>
+                </div>
+                <button class="login">
+                    Log In
+                </button>
+            </form>
+        </main>
+        <!-- On every page, js/storage.js  must be loaded before js/seed.js, or "load is not defined" will show as an error-->
+        <script src="js/storage.js"></script>
+        <script src="js/seed.js"></script>
+        <script src="js/login.js"></script>
+    </body>
+</html>
