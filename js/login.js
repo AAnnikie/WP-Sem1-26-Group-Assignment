@@ -44,7 +44,13 @@ myForm.addEventListener("submit",function(event){ // Without stopping the "submi
                 const value  = {role: l.role, username: l.username};
                 const valueAsString = JSON.stringify(value);
                 sessionStorage.setItem("current_user", valueAsString);
-                console.log(l.role);
+                if (l.role === "Admin"){
+                    window.location.href = "admin.html"; // W3Schools: "JavaScript Window Location"
+                }else if(l.role === "Teacher"){
+                    window.location.href = "teacher.html";
+                }else if(l.role === "Viewer"){
+                    window.location.href = "viewer.html";
+                }
             }
         }
         if (found === null){
