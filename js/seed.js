@@ -1,5 +1,6 @@
 /*
 Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828
 
 
 
@@ -11,16 +12,16 @@ File Purpose: Fills the fresh page's empty keys with sample records based on the
 
 const student_registry=
 [
-    {stud_name: "John Doe", stud_id: "A0000", stud_DOB: "2005-10-20"},
-    {stud_name: "Jane Dow", stud_id: "B0001", stud_DOB: "2004-11-21"},
-    {stud_name: "Jack Sparrow", stud_id: "C0002", stud_DOB: "2006-09-19"},
-    {stud_name: "Patrick Jane", stud_id: "D0003", stud_DOB: "2006-09-19"},
-    {stud_name: "Red John", stud_id: "E0004", stud_DOB: "2006-09-19"},
-    {stud_name: "Dexter Morgan", stud_id: "F0005", stud_DOB: "2006-09-19"},
-    {stud_name: "James Doakes", stud_id: "G0006", stud_DOB: "2006-09-19"},
-    {stud_name: "Walter White", stud_id: "H0007", stud_DOB: "2006-09-19"},
-    {stud_name: "Jesse Pinkman", stud_id: "I0008", stud_DOB: "2006-09-19"},
-    {stud_name: "Skylar Black", stud_id: "J0009", stud_DOB: "2006-09-19"}
+    {stud_name: "John Doe", stud_id: "A0000", stud_DOB: "2015-10-20", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"john.doe@gmail.com", stud_phone: "8764567890", stud_address: "123 Main St, Kingston"},
+    {stud_name: "Jane Dow", stud_id: "B0001", stud_DOB: "2014-11-21", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"jane.dow@yahoo.com", stud_phone: "6587654321", stud_address: "456 Oak Ave, St.Andrew"},
+    {stud_name: "Jack Sparrow", stud_id: "C0002", stud_DOB: "2013-09-19", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"jack.sparrow@gmail.com", stud_phone: "6585577555", stud_address: "789 Pine Rd, Mandeville"},
+    {stud_name: "Patrick Jane", stud_id: "D0003", stud_DOB: "2015-01-22", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"patrick.jane@gmail.com", stud_phone: "8764444444", stud_address: "321 Elm St, Spanish Town, St.Catherine"},
+    {stud_name: "Red John", stud_id: "E0004", stud_DOB: "2014-05-30", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"red.john@gmail.com", stud_phone: "8763333333", stud_address: "654 Maple Dr, Townsville"},
+    {stud_name: "Dexter Morgan", stud_id: "F0005", stud_DOB: "2013-12-03", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"dexter.morgan@icloud.com", stud_phone: "8762223422", stud_address: "987 Cedar Ln, Villagetown"},
+    {stud_name: "James Doakes", stud_id: "G0006", stud_DOB: "2015-09-14", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"james.doakes@gmail.com", stud_phone: "8761178111", stud_address: "321 Oak Ave, Cityville"},
+    {stud_name: "Walter White", stud_id: "H0007", stud_DOB: "2014-04-24", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"walter.white@gmail.com", stud_phone: "6582692222", stud_address: "654 Pine Rd, Townsville"},
+    {stud_name: "Jesse Pinkman", stud_id: "I0008", stud_DOB: "2013-08-06", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"jesse.pinkman@gmail.com", stud_phone: "8763345333", stud_address: "987 Maple Dr, Villagetown"},
+    {stud_name: "Skylar Black", stud_id: "J0009", stud_DOB: "2014-02-03", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"skylar.black@yahoo.com", stud_phone: "8764444467", stud_address: "123 Elm St, Cityville"}
 ];
 const logins=
 [   
