@@ -1,0 +1,59 @@
+<!--
+CIT2011 Group Project: School Portal
+Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828
+
+
+File Purpose: Admins can view student grades by semester
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Matrix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body id="Admin">
+    <header>
+        <h1>Academic Matrix</h1>
+        <nav>
+            <ul>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+                <li><a href="studentRegistry.html">Student Registry</a></li>
+                <li><a href="academic-matrix.html">Academic Matrix</a></li>
+                <li><button id="logout">Log Out</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="matrix-layout">
+
+            <aside class="matrix-side">
+                <h2>Filter</h2>
+                <label for="matrixSemester">Semester:</label>
+                <select id="matrixSemester">
+                    <option value="Semester 1">Semester 1</option>
+                    <option value="Semester 2">Semester 2</option>
+                    <option value="All">All Semesters</option>
+                </select>
+            </aside>
+
+            <section class="matrix-main">
+                <h2 id="matrixTitle"></h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead id="matrixHeading"></thead>
+                        <tbody id="matrixBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="js/guard.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/seed.js"></script>
+    <script src="js/admin-grades.js"></script>
+</body>
+</html>
