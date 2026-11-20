@@ -6,18 +6,24 @@ Adriana Pinnock 2401828
 
 
 CIT2011 Group Project: School Portal
-File Purpose: Logic for the Student Registry Page. Admins can add, edit and delete students.
+File Purpose: Admins can add, edit and delete students
 */
 
 const studentForm = document.querySelector("#studentForm");
 const tableBody = document.querySelector("#studentTableBody");
-
+const semesterFilter = document.querySelector("#semesterFilter");
 
 function loadStudentRegistry(){
     const students = load("student_registry");
+    const chosenSemester = semesterFilter.value;
+
 
     tableBody.innerHTML = ""; // Clears the table body before adding new rows
     for (const student of students){
+        if (chosenSemester !== "All" && student.semester !== chosenSemester){
+            continue;
+        }
+
         const row = document.createElement("tr");
 
         const columnValues = [
@@ -260,7 +266,7 @@ function startEditing(studentId) {
             document.querySelector("#academicYear").value = student.academic_year || "";
             document.querySelector("#studentSemester").value = student.semester || "";
             document.querySelector("#studentStatus").value = student.stud_status || "";
-            
+
             document.querySelector("#editingStudentId").value = student.stud_id;
             document.querySelector("#studentId").readOnly = true;   // the ID can't change
             document.querySelector("#saveStudentButton").textContent = "Update Student";
@@ -329,7 +335,7 @@ function deleteStudent(studentId) {
 
 // Add or update, depending on whether a student is being edited
 studentForm.addEventListener("submit", function (event) {
-    event.preventDefault();   // stop the page reloading
+    event.preventDefault();   // stop page from reloading so js can validate first
 
     if (validateStudentForm()) {
         if (document.querySelector("#editingStudentId").value === "") {
@@ -360,6 +366,8 @@ tableBody.addEventListener("click", function (event) {
     }
 });
 
+semesterFilter.addEventListener("change", loadStudentRegistry);
 
 
 loadStudentRegistry();
+window.addEventListener("pageshow", loadStudentRegistry); // the semester filter list wasn't loading automatically, so this remakes the table once the page has loaded

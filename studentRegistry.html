@@ -21,6 +21,8 @@ File Purpose: Student Registry page. Admins add, edit and view students
         <h1>Student Registry</h1>    
             <ul class="nav-links">
                 <li><a href="admin.html">Admin Dashboard</a></li>
+                <li><a href="studentRegistry.html">Student Registry</a></li>
+                <li><a href="academic-matrix.html">Academic Matrix</a></li>
                 <li><button id="logout">Log Out</button></li>
             </ul>
         </nav>
@@ -103,6 +105,14 @@ File Purpose: Student Registry page. Admins add, edit and view students
         </section>
         <section id="tableSection">
             <h2>Registered Students</h2>
+            <div class="filter-bar">
+                <label for="semesterFilter">Show students in:</label>
+                <select id="semesterFilter">
+                    <option value="Semester 1">Semester 1</option>
+                    <option value="Semester 2">Semester 2</option>
+                    <option value="All">All Semesters</option>
+                </select>
+            </div>
             <div class="table-wrapper">
                 <table>
                     <thead>
