@@ -104,11 +104,11 @@ const ledger=
     {stud_id: "I0008", ledger_id: "ABCDEFGHIJK7", academic_year: "AY26/27", semester: "Semester 1", tuition: 40000.00, balance: 0.00},
     {stud_id: "J0009", ledger_id: "ABCDEFGHIJK8", academic_year: "AY26/27", semester: "Semester 1", tuition: 40000.00, balance: 30000.00},
     
-    {stud_id: "K0010", ledger_id: "LDG2K0010A1B2", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 0.00},
-    {stud_id: "L0011", ledger_id: "LDG2L0011C3D4", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 30000.00},
-    {stud_id: "M0012", ledger_id: "LDG2M0012E5F6", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 60000.00},
-    {stud_id: "N0013", ledger_id: "LDG2N0013G7H8", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 15000.00},
-    {stud_id: "O0014", ledger_id: "LDG2O0014I9J0", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 0.00}
+    {stud_id: "K0010", ledger_id: "LDGK0010A1B2", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 0.00},
+    {stud_id: "L0011", ledger_id: "LDGL0011C3D4", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 30000.00},
+    {stud_id: "M0012", ledger_id: "LDGM0012E5F6", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 60000.00},
+    {stud_id: "N0013", ledger_id: "LDGN0013G7H8", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 15000.00},
+    {stud_id: "O0014", ledger_id: "LDGO0014I9J0", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 0.00}
 ]
 if (load("student_registry").length === 0){
     save("student_registry", student_registry);
