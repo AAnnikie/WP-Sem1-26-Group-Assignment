@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            School Portal | Teacher
+        </title>
+        
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="teacher.css">
+    </head>
+    <body>
+        <header>
+            <h1>Teacher Dashboard</h1>
+            <h3>Welcome to the School Portal</h3>
+        </header>
+        <main>
+            <p>Selected Subject:</p>
+            <select id="subjectSelect">
+                <option value="">Choose Subject</option>
+            </select>
+
+            <div id="studentTable"></div>
+
+            <hr><br><br>
+
+            <h2>Generate Report Card</h2>
+
+            <select id="studentSelect">
+                <option value="">Select Student</option>
+            </select>
+
+            <button id="reportBtn">
+                Generate Report
+            </button>
+
+            <div id="reportCard"></div>
+
+        </main>
+        <script src="js/storage.js"></script>
+        <script src="js/teacher.js"></script>
+        
+    </body>
