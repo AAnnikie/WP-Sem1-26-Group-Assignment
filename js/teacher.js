@@ -1,11 +1,24 @@
+/* <!--
+Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828
+Joel Clarke - 2407184 Wednesday 6-8pm
+
+
+CIT2011 Group Project: School Portal
+File Purpose: JavaScript for the teacher dashboard page
+--> */
+
+// Load data from localStorage
 const subjects = load("subjects");
 const students = load("student_registry");
 const curriculum = load("curriculum_mapping");
 const grades = load("grades");
 
+//reference and populate the subject selection dropdown
 const subjectSelect =
     document.getElementById("subjectSelect");
 
+// Populate the subject selection dropdown
 subjects.forEach(subject => {
     subjectSelect.innerHTML += `
         <option value="${subject.subject_code}">
@@ -13,18 +26,19 @@ subjects.forEach(subject => {
         </option>
     `;
 });
-
+// Display students when a subject is selected
 subjectSelect.addEventListener(
     "change",
     displayStudents
 );
 
-
+// Display enrolled students the selected subject as well as have access to edit gardes
 function displayStudents()
 {   
     const subjectCode =
         subjectSelect.value;
 
+    // Find the curriculum mapping for the selected subject
     const mapping =
         curriculum.find(
             item => item.subject_code === subjectCode
@@ -45,7 +59,7 @@ function displayStudents()
             <th>Grade</th>
         </tr>
     `;
-
+    // Create tables for each student enrolled in the selected subject
     mapping.stud_id.forEach(id => {
 
         const student =
@@ -87,6 +101,7 @@ function displayStudents()
     container.innerHTML = html;
 }
 
+// Save the grades entered after validation 
 function saveGrades()
 {
     const subjectCode =
@@ -105,6 +120,26 @@ function saveGrades()
         const newScore =
             Number(input.value);
 
+            // Validate Input
+            if(isNaN(newScore))
+        {
+            alert("Please enter a valid number for student ID: " +id);
+            return;
+        }
+
+        //Makes sure grade stay in the range
+        if(newScore < 0 || newScore > 100)
+        {
+            alert(
+                "Invalid score for student ID: " +
+                id +
+                ". Please enter a score between 0 and 100."
+            );
+
+            return;
+        }
+        
+        //Update grade in if matching record is found
         const gradeRecord =
             grades.find(
                 g =>
@@ -119,9 +154,10 @@ function saveGrades()
         }
     });
 
+    // Save updated grade (localstorage)
     save("grades", grades);
-
-    alert("Grades Saved");
+    
+    alert("Grades Saved Successfully!");
 }
 
 const studentSelect =
@@ -147,6 +183,11 @@ function generateReport()
     const studentID =
         studentSelect.value;
 
+        if(!studentID)
+        {
+            alert("Please select a student.");
+            return;
+        }
     const student =
         students.find(
             s => s.stud_id === studentID
