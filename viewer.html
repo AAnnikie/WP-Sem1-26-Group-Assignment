@@ -1,0 +1,35 @@
+<!--
+Zane Bryce 2404207 Wednesday 6-8pm
+
+
+
+
+CIT2011 Group Project: School Portal
+File Purpose: Simple HTML for the viewer dashboard
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            School Portal | Viewer
+        </title>
+    </head>
+    <body id="Viewer">
+        <header>
+            <h1>
+                School Viewer Dashboard
+            </h1>
+        </header>
+        <main>
+            <button id="logout">
+                    Log Out
+            </button>
+        </main>
+        <!-- On every page, js/storage.js  must be loaded before js/seed.js, or "load is not defined" will show as an error-->
+        <script src="js/storage.js"></script>
+        <script src="js/seed.js"></script>
+        <script src="js/guard.js"></script>
+    </body>
+</html>
