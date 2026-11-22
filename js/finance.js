@@ -1,7 +1,7 @@
 
-<!-- Tashea Thompson 2401109 Wed (6-8)- Financial Accounting and Reporting
+/* Tashea Thompson 2401109 Wed (6-8)- Financial Accounting and Reporting
    CIT2011 Group Project
--->
+*/
 
 // Load the group's student and financial records
 let financeStudents = load("student_registry");
