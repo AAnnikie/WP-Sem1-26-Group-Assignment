@@ -40,7 +40,7 @@ function displayStudents()
 
     // Find the curriculum mapping for the selected subject
     const mapping =
-        curriculum.find(
+        curriculum.filter(
             item => item.subject_code === subjectCode
         );
 
@@ -49,7 +49,7 @@ function displayStudents()
 
     container.innerHTML = "";
 
-    if(!mapping) return;
+    if(!mapping.length == 0) return;
 
     let html = `
     <table border="1">
@@ -60,32 +60,34 @@ function displayStudents()
         </tr>
     `;
     // Create tables for each student enrolled in the selected subject
-    mapping.stud_id.forEach(id => {
+    mappings.forEach(mapping => {
+        mappings.stud_id.forEach(id => {
 
-        const student =
-            students.find(
-                s => s.stud_id === id
-            );
+            const student =
+                students.find(
+                    s => s.stud_id === id
+                );
 
-        const grade =
-            grades.find(
-                g =>
-                g.stud_id === id &&
-                g.subject_code === subjectCode
-            );
+            const grade =
+                grades.find(
+                    g =>
+                    g.stud_id === id &&
+                    g.subject_code === subjectCode
+                );
 
-        html += `
-        <tr>
-            <td>${student.stud_id}</td>
-            <td>${student.stud_name}</td>
-            <td>
-                <input
-                    type="number"
-                    value="${grade ? grade.score : 0}"
-                    id="grade-${id}">
-            </td>
-        </tr>
-        `;
+            html += `
+            <tr>
+                <td>${student.stud_id}</td>
+                <td>${student.stud_name}</td>
+                <td>
+                    <input
+                        type="number"
+                        value="${grade ? grade.score : 0}"
+                        id="grade-${id}">
+                </td>
+            </tr>
+            `;
+        });
     });
 
     html += "</table>";
@@ -104,18 +106,15 @@ function displayStudents()
 // Save the grades entered after validation 
 function saveGrades()
 {
-    const subjectCode =
-        subjectSelect.value;
+    const subjectCode = subjectSelect.value;
 
-    const mapping =
-        curriculum.find(
-            item => item.subject_code === subjectCode
-        );
+    const mapping = curriculum.filter(item => item.subject_code === subjectCode);
 
-    mapping.stud_id.forEach(id => {
-
-        const input =
-            document.getElementById(`grade-${id}`);
+    let hasError = false;
+    mapping.forEach(item => {
+        item.stud_id.forEach(id => {
+            const input =
+                document.getElementById(`grade-${id}`);
 
         const newScore =
             Number(input.value);
