@@ -16,8 +16,8 @@ function checkAccess(){
         window.location.href = "login.html";
     }else{
         const user = JSON.parse(userText); // (W3Schools: "JSON.parse())"
-        const roleText = document.querySelector("body").id;
-        if(user.role !== roleText){
+        const allowedRoles = document.querySelector("body").dataset.role.split(" ");
+        if(!allowedRoles.includes(user.role)){
             window.location.href = "login.html";
         }
     }
