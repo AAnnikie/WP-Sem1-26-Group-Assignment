@@ -49,9 +49,10 @@ body{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color:var(--text);
 
-    background:
+     background:
         radial-gradient(circle at top left, #05015c, transparent 35%),
-        radial-gradient(circle at bottom right, #fffb00, transparent 35%),
+        radial-gradient(circle at bottom right, #fffb00, transparent 50%),
+        radial-gradient(circle at top right, #fffb00, transparent 50%),
         var(--bg);
 }
 
