@@ -1,25 +1,15 @@
-/* <!--
-Zane Bryce 2404207 Wednesday 6-8pm
-Adriana Pinnock 2401828
-Joel Clarke - 2407184 Wednesday 6-8pm
+const loadedSubjects = load("subjects");
+const loadedStudents = load("student_registry");
+const loadedCurriculum = load("curriculum_mapping");
+const loadedGrades = load("grades");
 
-
-CIT2011 Group Project: School Portal
-File Purpose: JavaScript for the teacher dashboard page
---> */
-
-// Load data from localStorage
-const subjects = load("subjects");
-const students = load("student_registry");
-const curriculum = load("curriculum_mapping");
-const grades = load("grades");
 
 //reference and populate the subject selection dropdown
 const subjectSelect =
     document.getElementById("subjectSelect");
 
 // Populate the subject selection dropdown
-subjects.forEach(subject => {
+loadedSubjects.forEach(subject => {
     subjectSelect.innerHTML += `
         <option value="${subject.subject_code}">
             ${subject.name}
@@ -35,21 +25,28 @@ subjectSelect.addEventListener(
 // Display enrolled students the selected subject as well as have access to edit gardes
 function displayStudents()
 {   
-    const subjectCode =
-        subjectSelect.value;
+    console.log("displayStudents called");
+
+    const subjectCode = subjectSelect.value;
+
+    console.log("Selected subject code:", subjectCode);
 
     // Find the curriculum mapping for the selected subject
-    const mapping =
-        curriculum.filter(
+    const mappings =
+        loadedCurriculum.filter(
             item => item.subject_code === subjectCode
         );
 
+    console.log("Mappings found:", mappings);
     const container =
         document.getElementById("studentTable");
 
     container.innerHTML = "";
 
-    if(!mapping.length == 0) return;
+    if(mappings.length == 0) {
+        console.log("No students enrolled in this subject.");
+        return;
+    }
 
     let html = `
     <table border="1">
@@ -61,15 +58,15 @@ function displayStudents()
     `;
     // Create tables for each student enrolled in the selected subject
     mappings.forEach(mapping => {
-        mappings.stud_id.forEach(id => {
+        mapping.stud_id.forEach(id => {
 
             const student =
-                students.find(
+                loadedStudents.find(
                     s => s.stud_id === id
                 );
 
             const grade =
-                grades.find(
+                loadedGrades.find(
                     g =>
                     g.stud_id === id &&
                     g.subject_code === subjectCode
@@ -108,39 +105,54 @@ function saveGrades()
 {
     const subjectCode = subjectSelect.value;
 
-    const mapping = curriculum.filter(item => item.subject_code === subjectCode);
+    const mapping = loadedCurriculum.filter(item => item.subject_code === subjectCode);
 
     let hasError = false;
-    mapping.forEach(item => {
-        item.stud_id.forEach(id => {
-            const input =
-                document.getElementById(`grade-${id}`);
+
+mapping.forEach(item => {
+    item.stud_id.forEach(id => {
+
+        const input =
+            document.getElementById(`grade-${id}`);
+
+        if(input.value.trim() === "")
+        {
+            hasError = true;
+        }
 
         const newScore =
             Number(input.value);
 
-            // Validate Input
-            if(isNaN(newScore))
+        if(isNaN(newScore))
         {
-            alert("Please enter a valid number for student ID: " +id);
-            return;
+            hasError = true;
         }
 
-        //Makes sure grade stay in the range
         if(newScore < 0 || newScore > 100)
         {
-            alert(
-                "Invalid score for student ID: " +
-                id +
-                ". Please enter a score between 0 and 100."
-            );
-
-            return;
+            hasError = true;
         }
-        
-        //Update grade in if matching record is found
+
+    });
+});
+
+if(hasError)
+{
+    alert("Please correct invalid grade before saving.");
+    return;
+} 
+
+mapping.forEach(item => {
+    item.stud_id.forEach(id => {
+
+        const input =
+            document.getElementById(`grade-${id}`);
+
+        const newScore =
+            Number(input.value);
+
         const gradeRecord =
-            grades.find(
+            loadedGrades.find(
                 g =>
                 g.stud_id === id &&
                 g.subject_code === subjectCode
@@ -148,54 +160,81 @@ function saveGrades()
 
         if(gradeRecord)
         {
-            gradeRecord.score =
-                newScore;
+            gradeRecord.score = newScore;
         }
-    });
+        else
+        {
+            loadedGrades.push({
+                stud_id: id,
+                subject_code: subjectCode,
+                score: newScore
+            });
+        }
 
-    // Save updated grade (localstorage)
-    save("grades", grades);
-    
-    alert("Grades Saved Successfully!");
+    });
+});
+
+
+
+save("grades", loadedGrades);
+
+alert("Grades Saved Successfully!");
 }
 
+// Student dropdown
 const studentSelect =
     document.getElementById("studentSelect");
 
-    students.forEach(student => {
+// Populate student dropdown
+loadedStudents.forEach(student => {
 
-        studentSelect.innerHTML += `
-            <option value="${student.stud_id}">
-                ${student.stud_name}
-            </option>
-        `;
-    });
+    studentSelect.innerHTML += `
+        <option value="${student.stud_id}">
+            ${student.stud_name}
+        </option>
+    `;
+});
 
-    document.getElementById("reportBtn")
+// Report button event
+document.getElementById("reportBtn")
     .addEventListener(
         "click",
         generateReport
-);
+    );
 
+// Generate report card
 function generateReport()
 {
     const studentID =
         studentSelect.value;
 
-        if(!studentID)
-        {
-            alert("Please select a student.");
-            return;
-        }
+    if(!studentID)
+    {
+        alert("Please select a student.");
+        return;
+    }
+
     const student =
-        students.find(
+        loadedStudents.find(
             s => s.stud_id === studentID
         );
 
     const studentGrades =
-        grades.filter(
+        loadedGrades.filter(
             g => g.stud_id === studentID
         );
+
+    if(studentGrades.length === 0)
+    {
+        document
+            .getElementById("reportCard")
+            .innerHTML = `
+                <h3>${student.stud_name}</h3>
+                <p>No grades available.</p>
+            `;
+
+        return;
+    }
 
     let total = 0;
 
@@ -206,7 +245,7 @@ function generateReport()
     studentGrades.forEach(record => {
 
         const subject =
-            subjects.find(
+            loadedSubjects.find(
                 s =>
                 s.subject_code ===
                 record.subject_code
@@ -226,11 +265,13 @@ function generateReport()
         total / studentGrades.length;
 
     html += `
-        <p>Average:
+        <p>
+            Average:
             ${average.toFixed(2)}
         </p>
 
-        <p>Grade:
+        <p>
+            Grade:
             ${letterGrade(average)}
         </p>
     `;
@@ -240,6 +281,7 @@ function generateReport()
         .innerHTML = html;
 }
 
+// Letter grade calculation
 function letterGrade(avg)
 {
     if(avg >= 80) return "A";
