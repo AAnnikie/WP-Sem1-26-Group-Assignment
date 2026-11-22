@@ -295,14 +295,12 @@ button,
 
 /* Student registry layout */
 
-#formSection,
-#tableSection {
-    margin-bottom: 2rem;
+#formSection{
+    margin-bottom: 22rem;
 }
-
-#studentForm {
-    max-width: none;
-    width: 100%;
+#tableSection {
+    margin-left: 3rem;
+    margin-bottom: 112rem;
 }
 
 /* Fieldsets group related student data. */
