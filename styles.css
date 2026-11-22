@@ -1,27 +1,27 @@
 /*
+Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828 Wednesday 6-8pm
+Tashea Thompson 2401109 Wednesday 6-8pm
 Alex Annikie 2208624 Wednesday 6-8pm
-
-
-
+Joel Clarke 2407184 Wednesday 6-8pm
 
 CIT2011 Group Project: School Portal
 File Purpose: CSS for school portal
 
 /* Variables*/
-
 :root{
-    --primary:#4f46e5;
+    --primary:#06007a;
     --primary-hover:#4338ca;
-    --secondary:#7c3aed;
+    --secondary:#f5f100;
 
     --success:#22c55e;
     --warning:#f59e0b;
     --danger:#ef4444;
 
-    --bg:#0f172a;
-    --surface:rgba(255,255,255,.08);
-    --surface-2:rgba(255,255,255,.12);
-    --border:rgba(255,255,255,.15);
+    --bg:#06007a;
+    --surface:rgba(255, 255, 255, 0.08);
+    --surface-2:rgba(248, 248, 248, 0.12);
+    --border:rgba(248, 248, 248, 0.15);
 
     --text:#ffffff;
     --text-muted:#cbd5e1;
@@ -46,12 +46,12 @@ html{
 /* Page foundation */
 body{
     min-height:100vh;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color:var(--text);
 
     background:
-        radial-gradient(circle at top left, rgba(79,70,229,.35), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(124,58,237,.3), transparent 35%),
+        radial-gradient(circle at top left, #05015c, transparent 35%),
+        radial-gradient(circle at bottom right, #fffb00, transparent 35%),
         var(--bg);
 }
 
@@ -123,23 +123,33 @@ nav{
     margin:1rem;
 }
 
-.nav-links{
-    display:flex;
-    gap:1rem;
-    list-style:none;
+.nav-bar {
+    width: 100%;
 }
 
-.nav-links a{
-    transition:.3s;
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
 }
 
-.nav-links a:hover{
-    color:#a5b4fc;
+.nav-links li {
+    list-style: none;
 }
 
-/* =========================
-   HERO
-========================= */
+.nav-links a {
+    padding: .6rem 1rem;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.nav-links a:hover { 
+    background: rgba(255,255,255,.08);
+    color:#f5f100;
+}
+
+/* Heero */
 
 .hero{
     text-align:center;
@@ -195,17 +205,17 @@ input,
 select,
 textarea{
     width:100%;
-
     padding:.85rem 1rem;
-
-    color:var(--text);
-
+    color:#ffffff;
     background:var(--surface-2);
-
     border:1px solid var(--border);
     border-radius:10px;
-
     outline:none;
+}
+
+select option {
+    background: #002c74;
+    color: #f7fc00;
 }
 
 input:focus,
@@ -227,7 +237,7 @@ button,
 
     transition:.3s;
 }
-/* Button */
+
 .login,
 .btn-primary{
     width:100%;
@@ -251,6 +261,26 @@ button,
     color:white;
 }
 
+/* Logout button */
+
+#logout {
+    background: var(--danger);
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: .8rem 1.25rem;
+
+    cursor: pointer;
+    transition: .3s;
+}
+
+#logout:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+
 /* Cards */
 
 .card-grid{
@@ -261,6 +291,118 @@ button,
 /* Card components */
 .card{
     padding:1.5rem;
+}
+
+/* Student registry layout */
+
+#formSection,
+#tableSection {
+    margin-bottom: 2rem;
+}
+
+#studentForm {
+    max-width: none;
+    width: 100%;
+}
+
+/* Fieldsets group related student data. */
+
+fieldset {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3rem;
+    margin-bottom: 3rem;
+
+    background: rgba(255,255,255,.03);
+}
+
+legend {
+    padding: 3rem;
+    font-weight: bold;
+}
+
+fieldset div {
+    margin-bottom: 1rem;
+}
+
+
+/* Registry action buttons */
+
+#saveStudentButton,
+#clearFormButton {
+    margin-right: .75rem;
+    background: rgb(34, 121, 0);
+    color: var(--text);
+}
+
+#clearFormButton {
+    background: rgb(165, 1, 1);
+    color: var(--text);
+}
+
+
+/* Registry filter bar */
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+
+/* Academic matrix page
+   Admin grade viewing page.
+*/
+
+.matrix-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+}
+
+.matrix-side {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    height: fit-content;
+}
+
+.matrix-main {
+    min-width: 0;
+}
+
+#matrixTitle {
+    margin-bottom: 1rem;
+}
+
+
+/* Finance page
+   Shared finance dashboard styling.
+*/
+
+.finance-main {
+    display: block;
+}
+
+.finance-main section {
+    margin-bottom: 3rem;
+}
+
+#ledger,
+#payments,
+#payment-history,
+#reports {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+#payment-message {
+    margin-top: 1rem;
 }
 
 /* Dashboard layout
@@ -293,6 +435,78 @@ button,
 
 .stat-card{
     padding:1.5rem;
+}
+
+/* Dashboard navigation cards
+   Used by admin dashboard.
+*/
+
+main nav ul {
+    list-style: none;
+
+    display: grid;
+    gap: 1rem;
+
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+main nav ul li a {
+    display: block;
+
+    padding: 1rem;
+
+    text-align: center;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    transition: .3s;
+}
+
+main nav ul li a:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.12);
+}
+
+
+/* Status colors
+   Useful for student status and balances.
+*/
+
+.status-active,
+.status-paid {
+    color: #22c55e;
+}
+
+.status-inactive,
+.status-pending {
+    color: #f59e0b;
+}
+
+.status-outstanding {
+    color: #ef4444;
+}
+
+
+/* Utility spacing */
+
+.hidden {
+    display: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
 }
 
 /* Table */
@@ -362,24 +576,25 @@ footer{
 
 /* Tablet breakpoint */
 
-@media (max-width:768px){
+@media (max-width: 768px) {
 
-    nav{
-        flex-direction:column;
-        gap:1rem;
+    fieldset {
+        padding: 1rem;
     }
 
-    .nav-links{
-        flex-direction:column;
-        text-align:center;
+    #saveStudentButton,
+    #clearFormButton {
+        width: 100%;
+        margin-bottom: .75rem;
     }
 
-    .dashboard{
-        grid-template-columns:1fr;
+    .nav-links {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    form{
-        padding:1.5rem;
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 }
 
