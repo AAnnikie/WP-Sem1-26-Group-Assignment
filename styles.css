@@ -172,11 +172,10 @@ nav{
 
 /* Login Page */
 
-main{
+.login-page main{
     display:flex;
     justify-content:center;
     align-items:center;
-
     min-height:80vh;
 }
 /* Form */
@@ -299,12 +298,13 @@ button,
 
 /* Student registry layout */
 
-#formSection{
-    margin-bottom: 22rem;
+#formSection,
+#tableSection{
+    width: 100%;
 }
-#tableSection {
-    margin-left: 3rem;
-    margin-bottom: 112rem;
+
+#tableSection{
+    margin-top: 2rem;
 }
 
 /* Fieldsets group related student data. */
