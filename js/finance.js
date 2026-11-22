@@ -1,13 +1,6 @@
 
-/*
-Zane Bryce 2404207 Wednesday 6-8pm
-Adriana Pinnock 2401828 Wednesday 6-8pm
-Tashea Thompson 2401109 Wednesday 6-8pm
-Alex Annikie 2208624 Wednesday 6-8pm
-Joel Clarke 2407184 Wednesday 6-8pm
-
-CIT2011 Group Project: School Portal
-File Purpose: Financial Accounting and Reporting
+/* Tashea Thompson 2401109 Wed (6-8)- Financial Accounting and Reporting
+   CIT2011 Group Project
 */
 
 // Load the group's student and financial records
@@ -26,8 +19,9 @@ try {
 }
 
 // Allow only recognized logged-in users
+// Allow Admin and Viewer access to finance
 if (!currentUser ||
-    !["Admin", "Teacher", "Viewer"].includes(currentUser.role)) {
+    !["Admin", "Viewer"].includes(currentUser.role)) {
     window.location.replace("login.html");
 }
 
@@ -294,3 +288,16 @@ displayLedger();
 displayTotals();
 loadPaymentStudents();
 displayTransactions();
+// Show payment controls and Admin link to administrators only
+function checkFinancePermissions() {
+    const paymentSection = document.getElementById("payments");
+    const adminLink = document.getElementById("admin-link");
+
+    if (currentUser && currentUser.role === "Admin") {
+        paymentSection.hidden = false;
+        adminLink.hidden = false;
+    } else {
+        paymentSection.hidden = true;
+        adminLink.hidden = true;
+    }
+}
