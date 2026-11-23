@@ -15,14 +15,41 @@ main{
     min-height:auto;
     padding:2rem 0;
 }
+#subjectSelect,
+#studentSelect{
+    margin-bottom:1rem;
+}
 
-/* Styling for the report card section */
-#reportCard{
-    margin-top:1.5rem;
-    padding:1.5rem;
+#studentTable table{
+    width:100%;
+    background:var(--surface);
+    backdrop-filter:blur(14px);
     border-radius:var(--radius);
-    background:var(--surface-2);
+    overflow:hidden;
+}
+
+#studentTable input[type="number"]{
+    width:90px;
+    text-align:center;
+}
+
+#reportBtn{
+    margin-top:.75rem;
+    width:auto;
+}
+
+#reportCard:empty{
+    display:none;
+}
+
+#reportCard{
+    margin-top:2rem;
+    padding:1.5rem;
+    background:var(--surface);
+    backdrop-filter:blur(14px);
     border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
 }
 
 #reportCard h3{
@@ -33,22 +60,7 @@ main{
     margin-bottom:.5rem;
 }
 
-#studentTable table{
-    width:100%;
-}
-/* Input grades for student Table*/
-#studentTable input[type="number"]{
-    width:90px;
-    text-align:center;
-}
-
-.teacher-actions{
-    display:flex;
-    gap:1rem;
-    margin-top:1rem;
-}
-/* let the button share space evenly */
-.teacher-actions button{
-    flex:1;
+#logout{
+    margin-top:2rem;
 }
 
