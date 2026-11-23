@@ -1,26 +1,44 @@
-/* <!--
-Zane Bryce 2404207 Wednesday 6-8pm
-Adriana Pinnock 2401828
-Joel Clarke - 2407184 Wednesday 6-8pm
-
-
-CIT2011 Group Project: School Portal
-File Purpose: CSS for styling the teacher dashboard page.
---> */
-
 main{
     display:block;
     min-height:auto;
     padding:2rem 0;
 }
 
-/* Styling for the report card section */
-#reportCard{
-    margin-top:1.5rem;
-    padding:1.5rem;
+#subjectSelect,
+#studentSelect{
+    margin-bottom:1rem;
+}
+
+#studentTable table{
+    width:100%;
+    background:var(--surface);
+    backdrop-filter:blur(14px);
     border-radius:var(--radius);
-    background:var(--surface-2);
+    overflow:hidden;
+}
+
+#studentTable input[type="number"]{
+    width:90px;
+    text-align:center;
+}
+
+#reportBtn{
+    margin-top:.75rem;
+    width:auto;
+}
+
+#reportCard:empty{
+    display:none;
+}
+
+#reportCard{
+    margin-top:2rem;
+    padding:1.5rem;
+    background:var(--surface);
+    backdrop-filter:blur(14px);
     border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
 }
 
 #reportCard h3{
@@ -31,22 +49,7 @@ main{
     margin-bottom:.5rem;
 }
 
-#studentTable table{
-    width:100%;
-}
-/* Input grades for student Table*/
-#studentTable input[type="number"]{
-    width:90px;
-    text-align:center;
-}
-
-.teacher-actions{
-    display:flex;
-    gap:1rem;
-    margin-top:1rem;
-}
-/* let the button share space evenly */
-.teacher-actions button{
-    flex:1;
+#logout{
+    margin-top:2rem;
 }
 
