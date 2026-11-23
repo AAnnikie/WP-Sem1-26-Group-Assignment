@@ -1,0 +1,119 @@
+<!--
+Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828 Wednesday 6-8pm
+Tashea Thompson 2401109 Wednesday 6-8pm
+Alex Annikie 2208624 Wednesday 6-8pm
+Joel Clarke 2407184 Wednesday 6-8pm
+
+CIT2011 Group Project: School Portal
+File Purpose: Contact page
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titchfield High School</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">    
+            <ul class="nav-links">
+                 <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Portal Login</a></li>
+            </ul>
+        </nav>
+    </header>
+<section class="hero">
+    <h1>Contact Us</h1>
+</section>
+<section class="card-grid">
+    <article class="card">
+        <h2>School Address</h2>
+        <p>
+            Titchfield High School
+            22 Fort George Street
+            Port Antonio, Portland
+            Jamaica
+        </p>
+    </article>
+
+    <article class="card">
+        <h2>Phone Numbers</h2>
+        <p>
+            Landline: 876-715-6051
+            WhatsApp: 876-878-4181
+        </p>
+    </article>
+
+    <article class="card">
+        <h2>Email Addresses</h2>
+        <p>
+            General Inquiries: info@titchfieldhigh.edu.jm
+            Admissions: admissions@titchfieldhigh.edu.jm
+            Principal's Office: principal@titchfieldhigh.edu.jm
+        </p>
+    </article>
+
+    <article class="card">
+        <h2>Office Hours</h2>
+        <p>
+            Monday - Friday: 8:00 AM - 4:00 PM
+            Saturday: 8:00 AM - 12:00 PM (Term time only)
+            Sunday: Closed
+        </p>
+    </article>
+
+<form id="contactForm">
+
+    <div>
+        <h2>Send us a Message</h2>
+        <label for="name">Full Name</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            pattern="[A-Za-z ]{3,60}"
+            title="Name must contain only letters and spaces">
+    </div>
+
+    <div>
+        <label for="email">Email Address</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required>
+    </div>
+
+    <div>
+        <label for="phone">Phone Number</label>
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            pattern="[0-9]{10}"
+            title="Enter a 10-digit phone number">
+    </div>
+
+    <div>
+        <label for="message">Message</label>
+        <textarea
+            id="message"
+            name="message"
+            required
+            minlength="10"></textarea>
+    </div>
+
+    <button type="submit" class="btn-primary">
+        Send Message
+    </button>
+</form>
+ <script src="js/contact.js"></script>
+</body>
+</html>
