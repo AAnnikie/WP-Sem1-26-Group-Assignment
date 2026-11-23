@@ -1,3 +1,4 @@
+
 <!--
 Zane Bryce 2404207 Wednesday 6-8pm
 Adriana Pinnock 2401828 Wednesday 6-8pm
@@ -6,31 +7,35 @@ Alex Annikie 2208624 Wednesday 6-8pm
 Joel Clarke 2407184 Wednesday 6-8pm
 
 CIT2011 Group Project: School Portal
-File Purpose: Simple HTML for the viewer dashboard
+File Purpose: Viewer dashboard
 -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            School Portal | Viewer
-        </title>
-        <link rel="stylesheet" href="titchfield-high-22-fort-george-st-port-antonio-css/titchfield-high-22-fort-george-st-port-antonio-styles.css">
-    </head>
-    <body data-role="Viewer">
-        <header>
-            <h1>
-                School Viewer Dashboard
-            </h1>
-        </header>
-        <main>
-            <button id="logout">
-                    Log Out
-            </button>
-        </main>
-        <!-- On every page, titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js  must be loaded before titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js, or "load is not defined" will show as an error-->
-        <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js"></script>
-        <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js"></script>
-        <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-guard.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Portal | Viewer</title>
+    <link rel="stylesheet" href="titchfield-high-22-fort-george-st-port-antonio-css/titchfield-high-22-fort-george-st-port-antonio-styles.css">
+</head>
+<body data-role="Viewer">
+    <header>
+        <h1>School Viewer Dashboard</h1>
+        <p>View school records and reports</p>
+    </header>
+
+    <main>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="titchfield-high-22-fort-george-st-port-antonio-student-registry.html">Student Registry</a></li>
+                <li><a href="titchfield-high-22-fort-george-st-port-antonio-academic-matrix.html">Academic Matrix</a></li>
+                <li><a href="titchfield-high-22-fort-george-st-port-antonio-finance.html">Financial Ledger</a></li>
+                <li><button type="button" id="logout">Log Out</button></li>
+            </ul>
+        </nav>
+    </main>
+
+    <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js"></script>
+    <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js"></script>
+    <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-guard.js"></script>
+</body>
 </html>
