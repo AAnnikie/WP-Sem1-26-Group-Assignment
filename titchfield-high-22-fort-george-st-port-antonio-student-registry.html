@@ -1,3 +1,4 @@
+
 <!--
 Zane Bryce 2404207 Wednesday 6-8pm
 Adriana Pinnock 2401828 Wednesday 6-8pm
@@ -6,7 +7,7 @@ Alex Annikie 2208624 Wednesday 6-8pm
 Joel Clarke 2407184 Wednesday 6-8pm
 
 CIT2011 Group Project: School Portal
-File Purpose: Student Registry page. Admins add, edit and view students
+File Purpose: Student Registry
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -16,29 +17,29 @@ File Purpose: Student Registry page. Admins add, edit and view students
     <title>Student Registry</title>
     <link rel="stylesheet" href="titchfield-high-22-fort-george-st-port-antonio-css/titchfield-high-22-fort-george-st-port-antonio-styles.css">
 </head>
-<body data-role="Admin">
+<body data-role="Admin Viewer">
     <header>
         <nav class="nav-bar">
-        <h1>Student Registry</h1>    
+            <h1>Student Registry</h1>
             <ul class="nav-links">
-                <li><a href="titchfield-high-22-fort-george-st-port-antonio-admin.html">Admin Dashboard</a></li>
+                <li id="adminDashboardLink"><a href="titchfield-high-22-fort-george-st-port-antonio-admin.html">Admin Dashboard</a></li>
+                <li id="viewerDashboardLink" hidden><a href="titchfield-high-22-fort-george-st-port-antonio-viewer.html">Viewer Dashboard</a></li>
                 <li><a href="titchfield-high-22-fort-george-st-port-antonio-student-registry.html">Student Registry</a></li>
                 <li><a href="titchfield-high-22-fort-george-st-port-antonio-academic-matrix.html">Academic Matrix</a></li>
                 <li><button id="logout">Log Out</button></li>
             </ul>
         </nav>
     </header>
+
     <main class="container">
         <section id="formSection">
             <form id="studentForm" novalidate>
                 <input type="hidden" id="editingStudentId">
                 <fieldset>
                     <legend>Student Information</legend>
-
                     <div>
                         <label for="studentId">Student ID:</label>
-                        <input type="text" id="studentId" name="studentId" required 
-                            pattern="[A-Z][0-9]{4}" title="Student ID must start with a capital letter followed by 4 digits" >
+                        <input type="text" id="studentId" name="studentId" required pattern="[A-Z][0-9]{4}" title="Student ID must start with a capital letter followed by 4 digits">
                         <p class="error" id="studentIdError"></p>
                     </div>
                     <div>
@@ -57,19 +58,17 @@ File Purpose: Student Registry page. Admins add, edit and view students
                     <legend>Contact Information</legend>
                     <div>
                         <label for="studentPhone">Parent/Guardian Phone:</label>
-                        <input type="tel" id="studentPhone" name="studentPhone" required 
-                            pattern="[0-9]{10}" title="Phone number must contain exactly 10 digits">
+                        <input type="tel" id="studentPhone" name="studentPhone" required pattern="[0-9]{10}" title="Phone number must contain exactly 10 digits">
                         <p class="error" id="studentPhoneError"></p>
                     </div>
                     <div>
                         <label for="studentEmail">Parent/Guardian Email:</label>
-                        <input type="email" id="studentEmail" name="studentEmail" required>   
+                        <input type="email" id="studentEmail" name="studentEmail" required>
                         <p class="error" id="studentEmailError"></p>
                     </div>
                     <div>
                         <label for="studentAddress">Address:</label>
-                        <input type="text" id="studentAddress" name="studentAddress" required
-                            maxlength="100">
+                        <input type="text" id="studentAddress" name="studentAddress" required maxlength="100">
                         <p class="error" id="studentAddressError"></p>
                     </div>
                 </fieldset>
@@ -86,7 +85,7 @@ File Purpose: Student Registry page. Admins add, edit and view students
                             <option value="">Select a semester</option>
                             <option value="Semester 1">Semester 1</option>
                             <option value="Semester 2">Semester 2</option>
-                        </select>  
+                        </select>
                         <p class="error" id="studentSemesterError"></p>
                     </div>
                     <div>
@@ -99,11 +98,12 @@ File Purpose: Student Registry page. Admins add, edit and view students
                         <p class="error" id="studentStatusError"></p>
                     </div>
                 </fieldset>
+
                 <button type="submit" id="saveStudentButton">Add Student</button>
                 <button type="reset" id="clearFormButton">Clear Form</button>
-                
             </form>
         </section>
+
         <section id="tableSection">
             <h2>Registered Students</h2>
             <div class="filter-bar">
@@ -125,19 +125,18 @@ File Purpose: Student Registry page. Admins add, edit and view students
                             <th>Phone</th>
                             <th>Semester</th>
                             <th>Status</th>
-                            <th>Actions</th>
+                            <th id="studentActionsHeading">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="studentTableBody"></tbody>
                 </table>
             </div>
         </section>
-
     </main>
+
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-guard.js"></script>
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js"></script>
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js"></script>
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-admin-students.js"></script>
-    
 </body>
 </html>
