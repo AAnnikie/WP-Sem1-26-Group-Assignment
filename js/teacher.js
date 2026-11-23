@@ -27,40 +27,32 @@ loadedSubjects.forEach(subject => {
         </option>
     `;
 });
-// Display students when a subject is selected
-subjectSelect.addEventListener(
-    "change",
-    displayStudents
-);
 
 // Display enrolled students the selected subject as well as have access to edit gardes
 function displayStudents()
 {   
-    console.log("displayStudents called");
-
     const subjectCode = subjectSelect.value;
 
-    console.log("Selected subject code:", subjectCode);
+    const semester = semesterSelect.value;
+
+
 
     // Find the curriculum mapping for the selected subject
-    const mappings =
-        loadedCurriculum.filter(
-            item => item.subject_code === subjectCode
-        );
+    const mappings = loadedCurriculum.filter(
+        item =>
+        item.subject_code === subjectCode &&
+        item.semester ===semester
+    );
 
-    console.log("Mappings found:", mappings);
     const container =
         document.getElementById("studentTable");
 
     container.innerHTML = "";
 
-    if(mappings.length == 0) {
-        console.log("No students enrolled in this subject.");
-        return;
-    }
+    if(mappings.length == 0) {return;}
 
     let html = `
-    <table border="1">
+    <table>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -103,20 +95,29 @@ function displayStudents()
     html += `
         <button
             class="btn-primary"
-            onclick="saveGrades()">
+            id="saveGradesBtn">
             Save Grades
         </button>
     `;
 
     container.innerHTML = html;
+    
+    document.getElementById("saveGradesBtn").addEventListener("click", saveGrades);
+
 }
 
 // Save the grades entered after validation 
 function saveGrades()
 {
+    const semester = semesterSelect.value;
+    
     const subjectCode = subjectSelect.value;
 
-    const mapping = loadedCurriculum.filter(item => item.subject_code === subjectCode);
+    const mapping = loadedCurriculum.filter(
+        item => 
+            item.subject_code === subjectCode &&
+            item.semester === semester
+    );
 
     let hasError = false;
 
@@ -172,16 +173,20 @@ mapping.forEach(item => {
         if(gradeRecord)
         {
             gradeRecord.score = newScore;
-        }
-        else
-        {
+        }else {
+            const student =
+                loadedStudents.find(
+                    s => s.stud_id === id
+                );
+
             loadedGrades.push({
                 stud_id: id,
                 subject_code: subjectCode,
-                score: newScore
+                score: newScore,
+                academic_year: student.academic_year,
+                semester: student.semester
             });
         }
-
     });
 });
 
@@ -206,14 +211,29 @@ loadedStudents.forEach(student => {
     `;
 });
 
-// Report button event
-document.getElementById("reportBtn")
-    .addEventListener(
-        "click",
-        generateReport
+const semesterSelect =
+    document.getElementById(
+        "semesterSelect"
+    );
+
+    subjectSelect.addEventListener(
+        "change",
+        displayStudents
+    );
+
+    semesterSelect.addEventListener(
+        "change",
+        displayStudents
     );
 
 // Generate report card
+    document.getElementById("reportBtn")
+        .addEventListener(
+            "click",
+            generateReport
+        );
+
+
 function generateReport()
 {
     const studentID =
