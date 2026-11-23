@@ -7,6 +7,7 @@ Joel Clarke 2407184 Wednesday 6-8pm
 
 CIT2011 Group Project: School Portal
 File Purpose: CSS for school portal
+*/
 
 /* Variables*/
 :root{
@@ -695,4 +696,7 @@ footer{
         break-inside: avoid;
     }
 }
-
+/* Keep hidden sections hidden */
+[hidden] {
+    display: none !important;
+}
