@@ -7,7 +7,6 @@ Joel Clarke 2407184 Wednesday 6-8pm
 
 CIT2011 Group Project: School Portal
 File Purpose: CSS for school portal
-*/
 
 /* Variables*/
 :root{
@@ -50,12 +49,18 @@ body{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color:var(--text);
 
-     background:
+    background:
         radial-gradient(circle at top left, #05015c, transparent 35%),
         radial-gradient(circle at bottom right, #fffb00, transparent 50%),
         radial-gradient(circle at top right, #fffb00, transparent 50%),
         var(--bg);
 }
+
+/* Index styling */
+.core-values{
+    text-align: center;
+}
+
 
 /* Shared containers for page width control. */
 
@@ -180,15 +185,12 @@ nav{
     min-height:80vh;
 }
 /* Form */
-form{
+#studentForm{
     width:min(100%,450px);
-
     padding:2rem;
-
     background:var(--surface);
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
-
     border:1px solid var(--border);
     border-radius:var(--radius);
 
@@ -295,6 +297,9 @@ button,
 /* Card components */
 .card{
     padding:1.5rem;
+    background: #002c74;
+    color: #f7fc00;
+
 }
 
 /* Student registry layout */
@@ -306,6 +311,11 @@ button,
 
 #tableSection{
     margin-top: 2rem;
+}
+
+#studentForm {
+    max-width: none;
+    width: 100%;
 }
 
 /* Fieldsets group related student data. */
@@ -382,9 +392,7 @@ fieldset div {
 }
 
 
-/* Finance page
-   Shared finance dashboard styling.
-*/
+/* Finance page */
 
 .finance-main {
     display: block;
@@ -396,7 +404,7 @@ fieldset div {
 
 #ledger,
 #payments,
-#paymentHistory,
+#payment-history,
 #reports {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -404,12 +412,12 @@ fieldset div {
     padding: 1.5rem;
 }
 
-#paymentMessage {
+#payment-message {
     margin-top: 1rem;
 }
 
 /* Dashboard layout
-   Admin, Teacher and Viewer pages. */
+   Admin and Teacher */
 
 .dashboard{
     display:grid;
@@ -441,7 +449,7 @@ fieldset div {
 }
 
 /* Dashboard navigation cards
-   Used by admin dashboard.
+   For admin dashboard.
 */
 
 main nav ul {
@@ -471,13 +479,10 @@ main nav ul li a {
 
 main nav ul li a:hover {
     transform: translateY(-2px);
-    background: rgba(255,255,255,.12);
+    background: #05015c;
 }
 
-
-/* Status colors
-   Useful for student status and balances.
-*/
+/* Status colours */
 
 .status-active,
 .status-paid {
@@ -546,6 +551,30 @@ tr:not(:last-child){
     margin-bottom:1rem;
 }
 
+/* Viewer dashboard */
+
+.viewer-dashboard{
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+}
+
+.viewer-section{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:1.5rem;
+}
+
+.viewer-section h2{
+    margin-bottom:1rem;
+}
+
+.read-only{
+    color:var(--secondary);
+    font-weight:bold;
+}
+
 /* Alerts */
 
 .alert{
@@ -577,31 +606,38 @@ footer{
     margin:1rem;
 }
 
-/* Tablet breakpoint */
+/* Tablet */
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 
-    fieldset {
-        padding: 1rem;
+    .dashboard,
+    .matrix-layout,
+    .registry-layout {
+        grid-template-columns: 1fr;
     }
 
-    #saveStudentButton,
-    #clearFormButton {
-        width: 100%;
-        margin-bottom: .75rem;
-    }
-
-    .nav-links {
+    nav {
         flex-direction: column;
-        align-items: stretch;
+        gap: 1rem;
     }
 
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar input,
+    .search-bar select,
+    .search-bar button {
+        width: 100%;
     }
 }
 
-/* Mobile breakpoint */
+/* Mobile */
+
 @media (max-width: 768px){
 
     nav{
@@ -649,182 +685,5 @@ footer{
 
     fieldset{
         padding:1rem;
-    }
-}
-
-/* Finance Report Printing */
-@media print {
-    @page {
-        size: A4 landscape;
-        margin: 12mm;
-    }
-
-    .finance-main #payments,
-    .finance-main #reports,
-    nav,
-    footer {
-        display: none !important;
-    }
-
-    body,
-    .finance-main section,
-    .finance-main .stat-card,
-    .finance-main th,
-    .finance-main td {
-        background: white !important;
-        color: black !important;
-        box-shadow: none !important;
-    }
-
-    .finance-main p,
-    .finance-main h2,
-    .finance-main h3 {
-        color: black !important;
-    }
-
-    .finance-main .table-wrapper {
-        overflow: visible;
-    }
-
-    .finance-main table {
-        display: table;
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .finance-main tr {
-        break-inside: avoid;
-    }
-}
-/* Keep hidden sections hidden */
-[hidden] {
-    display: none !important;
-}
-/* Fixing the overlapping in the Financial Ledger Layout */
-
-#ledger {
-    height: auto;
-    min-height: 0;
-    overflow: visible;
-}
-
-#ledger .summary-cards,
-#ledger .summary-grid,
-#ledger .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
-#ledger .summary-cards > *,
-#ledger .summary-grid > *,
-#ledger .stats-grid > * {
-    min-width: 0;
-    height: auto;
-    box-sizing: border-box;
-}
-
-#ledger .filter-bar,
-#ledger .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 16px;
-    margin-bottom: 20px;
-}
-
-#ledger .filter-bar > *,
-#ledger .filters > * {
-    flex: 1 1 220px;
-    min-width: 0;
-}
-
-#ledger .table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    margin-top: 16px;
-}
-
-@media (max-width: 650px) {
-    #ledger .summary-cards,
-    #ledger .summary-grid,
-    #ledger .stats-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.matrix-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 100%;
-}
-
-.matrix-side {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    max-width: 100%;
-    padding: 15px 20px;
-    box-sizing: border-box;
-}
-
-.matrix-side h2 {
-    margin: 0;
-    white-space: nowrap;
-}
-
-.matrix-side label {
-    margin: 0;
-    white-space: nowrap;
-}
-
-.matrix-side select {
-    width: 200px;
-    max-width: 100%;
-    flex: 0 1 200px;
-}
-
-.matrix-main {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-}
-
-.matrix-main .table-wrapper {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    box-sizing: border-box;
-}
-
-.matrix-main table {
-    width: max-content;
-    min-width: 100%;
-}
-
-.matrix-main th,
-.matrix-main td {
-    white-space: nowrap;
-}
-
-.matrix-main td input {
-    width: 65px;
-    min-width: 65px;
-    box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-    .matrix-side {
-        flex-wrap: wrap;
-    }
-
-    .matrix-side select {
-        flex: 1 1 100%;
-        width: 100%;
     }
 }
