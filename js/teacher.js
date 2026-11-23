@@ -1,3 +1,14 @@
+/*
+Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828 Wednesday 6-8pm
+Tashea Thompson 2401109 Wednesday 6-8pm
+Alex Annikie 2208624 Wednesday 6-8pm
+Joel Clarke 2407184 Wednesday 6-8pm
+
+CIT2011 Group Project: School Portal
+File Purpose: Teacher dashboard logic (subject filter, student grade management and report card generation).
+*/
+
 const loadedSubjects = load("subjects");
 const loadedStudents = load("student_registry");
 const loadedCurriculum = load("curriculum_mapping");
