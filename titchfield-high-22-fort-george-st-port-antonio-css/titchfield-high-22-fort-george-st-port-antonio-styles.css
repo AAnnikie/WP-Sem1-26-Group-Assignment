@@ -700,3 +700,56 @@ footer{
 [hidden] {
     display: none !important;
 }
+/* Fixing the overlapping in the Financial Ledger Layout */
+
+#ledger {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+}
+
+#ledger .summary-cards,
+#ledger .summary-grid,
+#ledger .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+#ledger .summary-cards > *,
+#ledger .summary-grid > *,
+#ledger .stats-grid > * {
+    min-width: 0;
+    height: auto;
+    box-sizing: border-box;
+}
+
+#ledger .filter-bar,
+#ledger .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+#ledger .filter-bar > *,
+#ledger .filters > * {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+#ledger .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 16px;
+}
+
+@media (max-width: 650px) {
+    #ledger .summary-cards,
+    #ledger .summary-grid,
+    #ledger .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
