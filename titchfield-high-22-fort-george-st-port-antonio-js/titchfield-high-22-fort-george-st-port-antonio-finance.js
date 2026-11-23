@@ -277,34 +277,28 @@ document.getElementById("printReport")
         window.print();
     });
 
-// Show payment controls to administrators only
-function checkFinancePermissions() {
-    const paymentSection = document.getElementById("payments");
-
-    if (currentUser && currentUser.role === "Admin") {
-        paymentSection.hidden = false;
-    } else {
-        paymentSection.hidden = true;
-    }
-}
-
-checkFinancePermissions();
-
-// Load the financial information
-displayLedger();
-displayTotals();
-loadPaymentStudents();
-displayTransactions();
 // Show payment controls and Admin link to administrators only
+
 function checkFinancePermissions() {
     const paymentSection = document.getElementById("payments");
     const adminLink = document.getElementById("adminLink");
+    const viewerLink = document.getElementById("viewerLink");
 
     if (currentUser && currentUser.role === "Admin") {
         paymentSection.hidden = false;
         adminLink.hidden = false;
+        viewerLink.hidden = true;
     } else {
         paymentSection.hidden = true;
         adminLink.hidden = true;
+        viewerLink.hidden = false;
     }
 }
+
+
+// Load the financial information
+checkFinancePermissions();
+displayLedger();
+displayTotals();
+loadPaymentStudents();
+displayTransactions();
