@@ -753,3 +753,78 @@ footer{
         grid-template-columns: 1fr;
     }
 }
+
+.matrix-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.matrix-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 100%;
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+.matrix-side h2 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.matrix-side label {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.matrix-side select {
+    width: 200px;
+    max-width: 100%;
+    flex: 0 1 200px;
+}
+
+.matrix-main {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.matrix-main .table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.matrix-main table {
+    width: max-content;
+    min-width: 100%;
+}
+
+.matrix-main th,
+.matrix-main td {
+    white-space: nowrap;
+}
+
+.matrix-main td input {
+    width: 65px;
+    min-width: 65px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .matrix-side {
+        flex-wrap: wrap;
+    }
+
+    .matrix-side select {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
