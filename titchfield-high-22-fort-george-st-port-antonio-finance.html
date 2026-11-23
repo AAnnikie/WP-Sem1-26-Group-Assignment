@@ -1,5 +1,12 @@
-<!-- Tashea Thompson 2401109 Wed (6-8)- Financial Accounting and Reporting
-   CIT2011 Group Project
+<!--
+Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828 Wednesday 6-8pm
+Tashea Thompson 2401109 Wednesday 6-8pm
+Alex Annikie 2208624 Wednesday 6-8pm
+Joel Clarke 2407184 Wednesday 6-8pm
+
+CIT2011 Group Project: School Portal
+File Purpose: Financial Accounting and Reporting
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Portal | Finance</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="titchfield-high-22-fort-george-st-port-antonio-css/titchfield-high-22-fort-george-st-port-antonio-styles.css">
 </head>
 <body data-role="Admin Viewer">
 
@@ -19,8 +26,8 @@
     <nav>
     <h2>Finance</h2>
     <ul class="nav-links">
-    <li id="admin-link" hidden>
-        <a href="admin.html">Admin Dashboard</a>
+    <li id="adminLink" hidden>
+        <a href="titchfield-high-22-fort-george-st-port-antonio-admin.html">Admin Dashboard</a>
     </li>
         <li><a href="#ledger">Financial Ledger</a></li>
         <li><a href="#reports">Reports</a></li>
@@ -37,25 +44,25 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <h3>Total Tuition</h3>
-                        <p id="total-tuition">J$0.00</p>
+                        <p id="totalTuition">J$0.00</p>
                     </div>
 
                     <div class="stat-card">
                         <h3>Total Payments</h3>
-                        <p id="total-payments">J$0.00</p>
+                        <p id="totalPayments">J$0.00</p>
                     </div>
 
                     <div class="stat-card">
                         <h3>Outstanding Balance</h3>
-                        <p id="total-balance">J$0.00</p>
+                        <p id="totalBalance">J$0.00</p>
                     </div>
                 </div>
 
                 <div class="search-bar">
-                    <input type="search" id="student-search"
+                    <input type="search" id="studentSearch"
                            placeholder="Search by name or ID">
 
-                    <select id="status-filter">
+                    <select id="statusFilter">
                         <option value="all">All Statuses</option>
                         <option value="Paid">Paid</option>
                         <option value="Pending">Pending</option>
@@ -75,7 +82,7 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody id="ledger-body">
+                        <tbody id="ledgerBody">
                         </tbody>
                     </table>
                 </div>
@@ -84,17 +91,17 @@
             <section id="payments" hidden>
                 <h2>Record Student Payment</h2>
 
-                <form id="payment-form">
+                <form id="paymentForm">
                     <div>
-                        <label for="payment-student">Select Student</label>
-                        <select id="payment-student" required>
+                        <label for="paymentStudent">Select Student</label>
+                        <select id="paymentStudent" required>
                             <option value="">Choose a student</option>
                         </select>
                     </div>
 
                     <div>
-                        <label for="payment-amount">Payment Amount (J$)</label>
-                        <input type="number" id="payment-amount"
+                        <label for="paymentAmount">Payment Amount (J$)</label>
+                        <input type="number" id="paymentAmount"
                             min="0.01" step="0.01" required>
                     </div>
 
@@ -102,11 +109,11 @@
                         Record Payment
                     </button>
 
-                    <p id="payment-message" aria-live="polite"></p>
+                    <p id="paymentMessage" aria-live="polite"></p>
                 </form>
             </section>
 
-            <section id="payment-history">
+            <section id="paymentHistory">
                 <h2>Payment Transaction History</h2>
 
                 <div class="table-wrapper">
@@ -120,7 +127,7 @@
                                 <th>Amount Paid</th>
                             </tr>
                         </thead>
-                        <tbody id="transaction-body">
+                        <tbody id="transactionBody">
                         </tbody>
                     </table>
                 </div>
@@ -130,7 +137,7 @@
                 <h2>Financial Reports</h2>
                 <div class="card">
                     <p>View and print student financial records.</p>
-                    <button id="print-report" class="btn-primary">
+                    <button id="printReport" class="btn-primary">
                         Print Report
                     </button>
                 </div>
@@ -143,9 +150,9 @@
         <p>School Portal | Financial Accounting</p>
     </footer>
 
-    <script src="js/storage.js"></script>
-<script src="js/seed.js"></script>
-<script src="js/finance.js"></script>
-<script src="js/guard.js"></script>
+    <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js"></script>
+<script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js"></script>
+<script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-finance.js"></script>
+<script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-guard.js"></script>
 </body>
 </html>

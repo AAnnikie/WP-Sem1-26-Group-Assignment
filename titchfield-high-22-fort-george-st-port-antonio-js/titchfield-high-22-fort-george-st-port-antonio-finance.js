@@ -1,6 +1,13 @@
 
-/* Tashea Thompson 2401109 Wed (6-8)- Financial Accounting and Reporting
-   CIT2011 Group Project
+/*
+Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828 Wednesday 6-8pm
+Tashea Thompson 2401109 Wednesday 6-8pm
+Alex Annikie 2208624 Wednesday 6-8pm
+Joel Clarke 2407184 Wednesday 6-8pm
+
+CIT2011 Group Project: School Portal
+File Purpose: Financial Accounting and Reporting
 */
 
 // Load the group's student and financial records
@@ -22,7 +29,7 @@ try {
 // Allow Admin and Viewer access to finance
 if (!currentUser ||
     !["Admin", "Viewer"].includes(currentUser.role)) {
-    window.location.replace("login.html");
+    window.location.replace("titchfield-high-22-fort-george-st-port-antonio-login.html");
 }
 
 
@@ -85,13 +92,13 @@ function getStudentName(studentId) {
 
 // Display student financial records
 function displayLedger() {
-    const ledgerBody = document.getElementById("ledger-body");
+    const ledgerBody = document.getElementById("ledgerBody");
     ledgerBody.innerHTML = "";
 
-    const searchText = document.getElementById("student-search")
+    const searchText = document.getElementById("studentSearch")
         .value.toLowerCase().trim();
 
-    const selectedStatus = document.getElementById("status-filter").value;
+    const selectedStatus = document.getElementById("statusFilter").value;
 
     financeLedger.forEach(function(record) {
         const studentName = getStudentName(record.stud_id);
@@ -139,19 +146,19 @@ function displayTotals() {
         totalBalance += record.balance;
     });
 
-    document.getElementById("total-tuition").textContent =
+    document.getElementById("totalTuition").textContent =
         formatMoney(totalTuition);
 
-    document.getElementById("total-payments").textContent =
+    document.getElementById("totalPayments").textContent =
         formatMoney(totalPayments);
 
-    document.getElementById("total-balance").textContent =
+    document.getElementById("totalBalance").textContent =
         formatMoney(totalBalance);
 }
 
 // Add students to the payment dropdown
 function loadPaymentStudents() {
-    const studentSelect = document.getElementById("payment-student");
+    const studentSelect = document.getElementById("paymentStudent");
 
     studentSelect.innerHTML = '<option value="">Choose a student</option>';
 
@@ -176,9 +183,9 @@ function recordPayment(event) {
         return;
     }
 
-    const studentId = document.getElementById("payment-student").value;
-    const amount = Number(document.getElementById("payment-amount").value);
-    const message = document.getElementById("payment-message");
+    const studentId = document.getElementById("paymentStudent").value;
+    const amount = Number(document.getElementById("paymentAmount").value);
+    const message = document.getElementById("paymentMessage");
 
     const record = financeLedger.find(function(item) {
         return item.stud_id === studentId;
@@ -224,12 +231,12 @@ function recordPayment(event) {
 
     message.textContent = "Payment recorded successfully.";
 
-    document.getElementById("payment-form").reset();
+    document.getElementById("paymentForm").reset();
 }
 
 // Display payment transaction history
 function displayTransactions() {
-    const transactionBody = document.getElementById("transaction-body");
+    const transactionBody = document.getElementById("transactionBody");
     transactionBody.innerHTML = "";
 
     transactions.forEach(function(transaction) {
@@ -254,18 +261,18 @@ function displayTransactions() {
 }
 
 // Search and filter records
-document.getElementById("student-search")
+document.getElementById("studentSearch")
     .addEventListener("input", displayLedger);
 
-document.getElementById("status-filter")
+document.getElementById("statusFilter")
     .addEventListener("change", displayLedger);
 
 // Record payments
-document.getElementById("payment-form")
+document.getElementById("paymentForm")
     .addEventListener("submit", recordPayment);
 
 // Print financial information
-document.getElementById("print-report")
+document.getElementById("printReport")
     .addEventListener("click", function() {
         window.print();
     });
@@ -291,7 +298,7 @@ displayTransactions();
 // Show payment controls and Admin link to administrators only
 function checkFinancePermissions() {
     const paymentSection = document.getElementById("payments");
-    const adminLink = document.getElementById("admin-link");
+    const adminLink = document.getElementById("adminLink");
 
     if (currentUser && currentUser.role === "Admin") {
         paymentSection.hidden = false;

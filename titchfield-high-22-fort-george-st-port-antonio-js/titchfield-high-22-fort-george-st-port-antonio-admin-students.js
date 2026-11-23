@@ -65,12 +65,12 @@ function loadStudentRegistry(){
 
 // Shows an error message under a field
 function showError(fieldId, message) {
-    document.querySelector("#" + fieldId + "-error").textContent = message;
+    document.querySelector("#" + fieldId + "Error").textContent = message;
 }
 
 // Clears the message under a field
 function clearError(fieldId) {
-    document.querySelector("#" + fieldId + "-error").textContent = "";
+    document.querySelector("#" + fieldId + "Error").textContent = "";
 }
 
 // Clears every message (used by the Clear Form button)

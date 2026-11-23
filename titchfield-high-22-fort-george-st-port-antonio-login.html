@@ -1,0 +1,49 @@
+<!--
+Zane Bryce 2404207 Wednesday 6-8pm
+Adriana Pinnock 2401828 Wednesday 6-8pm
+Tashea Thompson 2401109 Wednesday 6-8pm
+Alex Annikie 2208624 Wednesday 6-8pm
+Joel Clarke 2407184 Wednesday 6-8pm
+
+CIT2011 Group Project: School Portal
+File Purpose: Simple HTML for the portal login page
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            School Portal | Login
+        </title>
+        <link rel="stylesheet" href="titchfield-high-22-fort-george-st-port-antonio-css/titchfield-high-22-fort-george-st-port-antonio-styles.css">
+    </head>
+    <body class="login-page">
+        <header>
+            <h1>
+                School Portal Login
+            </h1>
+        </header>
+        <main>
+            <form novalidate> <!--w3Schools HTML form novalidate Attribute. novalidate turns off the browser's own checks so titchfield-high-22-fort-george-st-port-antonio-login.js handles every rule-->
+                <div> <!-- Empty error label: titchfield-high-22-fort-george-st-port-antonio-login.js writes the in-place error message here -->
+                    <label for="username">Username</label>
+                    <input type="text" id="username">
+                    <p id="usernameError" class="error"></p>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password">
+                    <p id="passwordError" class="error"></p>
+                </div>
+                <button class="login">
+                    Log In
+                </button>
+            </form>
+        </main>
+        <!-- On every page, titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js  must be loaded before titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js, or "load is not defined" will show as an error-->
+        <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js"></script>
+        <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js"></script>
+        <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-login.js"></script>
+    </body>
+</html>

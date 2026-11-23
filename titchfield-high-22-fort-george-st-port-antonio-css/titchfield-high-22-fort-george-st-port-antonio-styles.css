@@ -395,7 +395,7 @@ fieldset div {
 
 #ledger,
 #payments,
-#payment-history,
+#paymentHistory,
 #reports {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -403,7 +403,7 @@ fieldset div {
     padding: 1.5rem;
 }
 
-#payment-message {
+#paymentMessage {
     margin-top: 1rem;
 }
 

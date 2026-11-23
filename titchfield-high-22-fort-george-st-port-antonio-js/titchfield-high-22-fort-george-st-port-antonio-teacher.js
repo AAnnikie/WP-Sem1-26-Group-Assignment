@@ -91,7 +91,7 @@ function displayStudents()
                     <input
                         type="number"
                         value="${grade ? grade.score : 0}"
-                        id="grade-${id}">
+                        id="grade${id}">
                 </td>
             </tr>
             `;
@@ -124,7 +124,7 @@ mapping.forEach(item => {
     item.stud_id.forEach(id => {
 
         const input =
-            document.getElementById(`grade-${id}`);
+            document.getElementById(`grade${id}`);
 
         if(input.value.trim() === "")
         {
@@ -157,7 +157,7 @@ mapping.forEach(item => {
     item.stud_id.forEach(id => {
 
         const input =
-            document.getElementById(`grade-${id}`);
+            document.getElementById(`grade${id}`);
 
         const newScore =
             Number(input.value);

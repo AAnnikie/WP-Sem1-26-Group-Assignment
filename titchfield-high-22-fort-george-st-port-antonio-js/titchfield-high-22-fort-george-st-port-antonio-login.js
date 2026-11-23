@@ -14,7 +14,7 @@ myForm.addEventListener("submit",function(event){ // Without stopping the "submi
     event.preventDefault(); // w3schools: Event preventDefault()
     // Username: required and cannot consist of empty spaces
     const usernameBox = document.querySelector("#username");
-    const usernameError = document.querySelector("#username-error");
+    const usernameError = document.querySelector("#usernameError");
     if (usernameBox.value.trim() === ""){   // .trim() cuts trailing and leading spaces from a string (W3Schools: JavaScript String trim())
         usernameError.textContent = "Please type in your username.";
     }else{
@@ -22,7 +22,7 @@ myForm.addEventListener("submit",function(event){ // Without stopping the "submi
     }
     // Password: required and cannot consist of empty spaces
     const passwordBox = document.querySelector("#password");
-    const passwordError = document.querySelector("#password-error");
+    const passwordError = document.querySelector("#passwordError");
     if (passwordBox.value.trim() === ""){   // .trim() cuts trailing and leading spaces from a string (W3Schools: JavaScript String trim())
         passwordError.textContent = "Please type in your password.";
     }else{
@@ -46,11 +46,11 @@ myForm.addEventListener("submit",function(event){ // Without stopping the "submi
                 const valueAsString = JSON.stringify(value);
                 sessionStorage.setItem("current_user", valueAsString);
                 if (l.role === "Admin"){
-                    window.location.href = "admin.html"; // W3Schools: "JavaScript Window Location"
+                    window.location.href = "titchfield-high-22-fort-george-st-port-antonio-admin.html"; // W3Schools: "JavaScript Window Location"
                 }else if(l.role === "Teacher"){
-                    window.location.href = "teacher.html";
+                    window.location.href = "titchfield-high-22-fort-george-st-port-antonio-teacher.html";
                 }else if(l.role === "Viewer"){
-                    window.location.href = "viewer.html";
+                    window.location.href = "titchfield-high-22-fort-george-st-port-antonio-viewer.html";
                 }
             }
         }

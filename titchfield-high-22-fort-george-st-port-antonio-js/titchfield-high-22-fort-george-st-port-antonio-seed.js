@@ -10,7 +10,7 @@ File Purpose: Fills the fresh page's empty keys with sample records based on the
 */
 
 
-const student_registry=
+const studentRegistry=
 [
     {stud_name: "John Doe", stud_id: "A0000", stud_DOB: "2015-10-20", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"john.doe@gmail.com", stud_phone: "8764567890", stud_address: "123 Main St, Kingston"},
     {stud_name: "Jane Dow", stud_id: "B0001", stud_DOB: "2014-11-21", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"jane.dow@yahoo.com", stud_phone: "6587654321", stud_address: "456 Oak Ave, St.Andrew"},
@@ -43,7 +43,7 @@ const subjects=
     {name: "Physics", subject_code: "PHY1"},
     {name: "Chemistry", subject_code: "CHM1"}
 ]
-const curriculum_mapping= 
+const curriculumMapping= 
 [
     {subject_code: "MAT1", stud_id: ["A0000", "D0003", "E0004", "F0005", "H0007"], academic_year: "AY26/27", semester: "Semester 1"},
     {subject_code: "ENG1", stud_id: ["B0001", "A0000", "C0002", "F0005", "I0008"], academic_year: "AY26/27", semester: "Semester 1"},
@@ -111,7 +111,7 @@ const ledger=
     {stud_id: "O0014", ledger_id: "LDGO0014I9J0", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 0.00}
 ]
 if (load("student_registry").length === 0){
-    save("student_registry", student_registry);
+    save("student_registry", studentRegistry);
 }
 if (load("logins").length === 0){
     save("logins", logins);
@@ -120,7 +120,7 @@ if (load("subjects").length === 0){
     save("subjects", subjects);
 }
 if (load("curriculum_mapping").length === 0){
-    save("curriculum_mapping",curriculum_mapping);
+    save("curriculum_mapping",curriculumMapping);
 }
 if (load("grades").length === 0){
     save("grades", grades);
