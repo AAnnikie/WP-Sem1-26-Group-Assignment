@@ -650,3 +650,49 @@ footer{
         padding:1rem;
     }
 }
+
+/* Finance Report Printing */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 12mm;
+    }
+
+    .finance-main #payments,
+    .finance-main #reports,
+    nav,
+    footer {
+        display: none !important;
+    }
+
+    body,
+    .finance-main section,
+    .finance-main .stat-card,
+    .finance-main th,
+    .finance-main td {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+
+    .finance-main p,
+    .finance-main h2,
+    .finance-main h3 {
+        color: black !important;
+    }
+
+    .finance-main .table-wrapper {
+        overflow: visible;
+    }
+
+    .finance-main table {
+        display: table;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .finance-main tr {
+        break-inside: avoid;
+    }
+}
+
