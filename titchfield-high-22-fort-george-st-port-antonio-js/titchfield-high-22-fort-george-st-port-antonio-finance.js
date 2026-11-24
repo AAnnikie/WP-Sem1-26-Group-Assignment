@@ -104,6 +104,7 @@ function displayLedger() {
         const studentName = getStudentName(record.stud_id);
         const status = getPaymentStatus(record);
 
+        // A row shows only if it matches the search text (name or ID) and the status filter
         const matchesSearch =
             studentName.toLowerCase().includes(searchText) ||
             record.stud_id.toLowerCase().includes(searchText);
@@ -191,6 +192,7 @@ function recordPayment(event) {
         return item.stud_id === studentId;
     });
 
+    // Check the payment: a student is chosen, the amount is above 0 and not more than the balance
     if (!record) {
         message.textContent = "Please select a student.";
         return;

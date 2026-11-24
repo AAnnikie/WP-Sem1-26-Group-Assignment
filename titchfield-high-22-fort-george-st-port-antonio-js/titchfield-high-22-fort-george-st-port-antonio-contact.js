@@ -10,12 +10,14 @@ File Purpose: Contact page regex/email validation
 */
 
 
+// Check the email format when the form is submitted
 document.getElementById("contactForm").addEventListener("submit", function (e) {
 
     const email = document.getElementById("email").value.trim();
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    // Stop the form from sending and warn if the email is not valid
     if (!emailRegex.test(email)) {
         e.preventDefault();
         alert("Please enter a valid email address.");

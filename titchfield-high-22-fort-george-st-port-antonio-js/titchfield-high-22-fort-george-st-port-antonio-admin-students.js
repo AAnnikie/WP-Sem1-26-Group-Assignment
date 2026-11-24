@@ -10,13 +10,16 @@ CIT2011 Group Project: School Portal
 File Purpose: Admins can add, edit and delete students
 */
 
+// Page elements used by the registry
 const studentForm = document.querySelector("#studentForm");
 const tableBody = document.querySelector("#studentTableBody");
 const semesterFilter = document.querySelector("#semesterFilter");
 
+// Check if the logged-in user is an Admin
 const registryUser = JSON.parse(sessionStorage.getItem("current_user") || "null");
 const registryIsAdmin = registryUser && registryUser.role === "Admin";
 
+// Viewers get a read-only page: hide the form and action column, show the Viewer dashboard link
 if (!registryIsAdmin) {
     document.querySelector("#formSection").hidden = true;
     document.querySelector("#studentActionsHeading").hidden = true;
@@ -24,6 +27,7 @@ if (!registryIsAdmin) {
     document.querySelector("#viewerDashboardLink").hidden = false;
 }
 
+// Fill the table with saved students, filtered by the chosen semester
 function loadStudentRegistry() {
     const students = load("student_registry");
     const chosenSemester = semesterFilter.value;
@@ -53,6 +57,7 @@ function loadStudentRegistry() {
             row.appendChild(cell);
         }
 
+        // Only Admins get Edit and Delete buttons on each row
         if (registryIsAdmin) {
             const actionButton = document.createElement("td");
 
@@ -75,6 +80,7 @@ function loadStudentRegistry() {
     }
 }
 
+// Show or clear the error message under a form field
 function showError(fieldId, message) {
     document.querySelector("#" + fieldId + "Error").textContent = message;
 }
@@ -83,6 +89,7 @@ function clearError(fieldId) {
     document.querySelector("#" + fieldId + "Error").textContent = "";
 }
 
+// Clear every error message on the form
 function clearAllErrors() {
     const errorParagraphs = document.querySelectorAll(".error");
 
@@ -91,6 +98,7 @@ function clearAllErrors() {
     }
 }
 
+// ID: required, one capital letter + 4 digits, and not already registered
 function validateStudentId() {
     const idValue = document.querySelector("#studentId").value.trim();
     const editingId = document.querySelector("#editingStudentId").value;
@@ -116,6 +124,7 @@ function validateStudentId() {
     return true;
 }
 
+// Name: required, 2-60 characters, letters and . ' - only
 function validateStudentName() {
     const nameValue = document.querySelector("#studentName").value.trim();
 
@@ -138,6 +147,7 @@ function validateStudentName() {
     return true;
 }
 
+// Date of birth: required, not in the future, age 11-18
 function validateStudentDob() {
     const dobValue = document.querySelector("#studentDob").value;
     const todayDate = new Date().toISOString().split("T")[0];
@@ -164,6 +174,7 @@ function validateStudentDob() {
     return true;
 }
 
+// Phone: required, exactly 10 digits
 function validateStudentPhone() {
     const phoneValue = document.querySelector("#studentPhone").value.trim();
 
@@ -181,6 +192,7 @@ function validateStudentPhone() {
     return true;
 }
 
+// Email: required and in a valid email format
 function validateStudentEmail() {
     const emailValue = document.querySelector("#studentEmail").value.trim();
 
@@ -198,6 +210,7 @@ function validateStudentEmail() {
     return true;
 }
 
+// Address: required, 5-100 characters
 function validateStudentAddress() {
     const addressValue = document.querySelector("#studentAddress").value.trim();
 
@@ -215,6 +228,7 @@ function validateStudentAddress() {
     return true;
 }
 
+// Dropdowns: an option must be chosen
 function validateDropdown(fieldId, label) {
     const chosenValue = document.querySelector("#" + fieldId).value;
 
@@ -227,6 +241,7 @@ function validateDropdown(fieldId, label) {
     return true;
 }
 
+// Run every check so all errors show at once; true only if all pass
 function validateStudentForm() {
     const okId = validateStudentId();
     const okName = validateStudentName();
@@ -241,6 +256,7 @@ function validateStudentForm() {
         okEmail && okAddress && okSemester && okStatus;
 }
 
+// Add: build a new student record from the form and save it
 function addStudent() {
     if (!registryIsAdmin) return;
 
@@ -262,6 +278,7 @@ function addStudent() {
     save("student_registry", students);
 }
 
+// Edit: copy the chosen student into the form and lock the ID field
 function startEditing(studentId) {
     if (!registryIsAdmin) return;
 
@@ -286,6 +303,7 @@ function startEditing(studentId) {
     }
 }
 
+// Update: save the form values over the student being edited
 function updateStudent() {
     if (!registryIsAdmin) return;
 
@@ -308,12 +326,14 @@ function updateStudent() {
     save("student_registry", students);
 }
 
+// Put the form back into "Add Student" mode
 function exitEditMode() {
     document.querySelector("#editingStudentId").value = "";
     document.querySelector("#studentId").readOnly = false;
     document.querySelector("#saveStudentButton").textContent = "Add Student";
 }
 
+// Delete: blocked if the student has grades or a ledger record, otherwise asks to confirm
 function deleteStudent(studentId) {
     if (!registryIsAdmin) return;
 
@@ -347,6 +367,7 @@ function deleteStudent(studentId) {
     loadStudentRegistry();
 }
 
+// Submit: validate, then add or update depending on the mode
 studentForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -364,11 +385,13 @@ studentForm.addEventListener("submit", function (event) {
     }
 });
 
+// Reset: clear errors and leave edit mode
 studentForm.addEventListener("reset", function () {
     clearAllErrors();
     exitEditMode();
 });
 
+// One click listener on the table handles every Edit and Delete button
 tableBody.addEventListener("click", function (event) {
     if (!registryIsAdmin) return;
 
@@ -382,7 +405,9 @@ tableBody.addEventListener("click", function (event) {
     }
 });
 
+// Reload the table when the semester filter changes
 semesterFilter.addEventListener("change", loadStudentRegistry);
 
+// Show the table on load, and again when the page is restored with Back
 loadStudentRegistry();
 window.addEventListener("pageshow", loadStudentRegistry);

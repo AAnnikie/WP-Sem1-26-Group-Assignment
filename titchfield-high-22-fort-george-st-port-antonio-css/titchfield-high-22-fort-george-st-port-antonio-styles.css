@@ -159,7 +159,7 @@ nav{
     color:#f5f100;
 }
 
-/* Heero */
+/* Hero */
 
 .hero{
     text-align:center;
@@ -699,6 +699,7 @@ body[data-role="Teacher"] main{
     margin-bottom:1rem;
 }
 
+/* Grade table for the chosen subject */
 #studentTable table{
     width:100%;
     background:var(--surface);
@@ -717,6 +718,7 @@ body[data-role="Teacher"] main{
     width:auto;
 }
 
+/* Hide the report card box until a report is generated */
 #reportCard:empty{
     display:none;
 }

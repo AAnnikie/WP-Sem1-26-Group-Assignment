@@ -9,6 +9,7 @@ CIT2011 Group Project: School Portal
 File Purpose: Handles the functionality of the teacher dashboard, including subject selection,
 student grade management, and report generation.
 */
+// Load the saved data this page needs from localStorage
 const loadedSubjects = load("subjects");
 const loadedStudents = load("student_registry");
 const loadedCurriculum = load("curriculum_mapping");
@@ -28,7 +29,7 @@ loadedSubjects.forEach(subject => {
     `;
 });
 
-// Display enrolled students the selected subject as well as have access to edit gardes
+// Display enrolled students the selected subject as well as have access to edit grades
 function displayStudents()
 {   
     const subjectCode = subjectSelect.value;
@@ -49,8 +50,10 @@ function displayStudents()
 
     container.innerHTML = "";
 
+    // Stop if no students take this subject in the chosen semester
     if(mappings.length == 0) {return;}
 
+    // Build the grade table: one row per enrolled student, with the current score in a number box
     let html = `
     <table>
         <tr>
@@ -90,6 +93,7 @@ function displayStudents()
         });
     });
 
+    // Add the Save button under the table
     html += "</table>";
 
     html += `
@@ -102,6 +106,7 @@ function displayStudents()
 
     container.innerHTML = html;
     
+    // Connect the new Save button to saveGrades
     document.getElementById("saveGradesBtn").addEventListener("click", saveGrades);
 
 }
@@ -119,6 +124,7 @@ function saveGrades()
             item.semester === semester
     );
 
+    // First pass: every score must be filled in and be a number from 0 to 100
     let hasError = false;
 
 mapping.forEach(item => {
@@ -148,12 +154,14 @@ mapping.forEach(item => {
     });
 });
 
+// Stop and warn if any score is invalid
 if(hasError)
 {
     alert("Please correct invalid grade before saving.");
     return;
 } 
 
+// Second pass: update the existing grade record, or add a new one
 mapping.forEach(item => {
     item.stud_id.forEach(id => {
 
@@ -192,6 +200,7 @@ mapping.forEach(item => {
 
 
 
+// Save all grades back to localStorage
 save("grades", loadedGrades);
 
 alert("Grades Saved Successfully!");
@@ -211,11 +220,13 @@ loadedStudents.forEach(student => {
     `;
 });
 
+// Semester dropdown (filters the student table with the subject)
 const semesterSelect =
     document.getElementById(
         "semesterSelect"
     );
 
+    // Reload the student table when the subject or semester changes
     subjectSelect.addEventListener(
         "change",
         displayStudents
@@ -239,6 +250,7 @@ function generateReport()
     const studentID =
         studentSelect.value;
 
+    // A student must be chosen first
     if(!studentID)
     {
         alert("Please select a student.");
@@ -250,11 +262,13 @@ function generateReport()
             s => s.stud_id === studentID
         );
 
+    // Collect every grade saved for this student
     const studentGrades =
         loadedGrades.filter(
             g => g.stud_id === studentID
         );
 
+    // No grades yet: show the name and a message
     if(studentGrades.length === 0)
     {
         document
@@ -267,6 +281,7 @@ function generateReport()
         return;
     }
 
+    // Add up the scores and list each subject
     let total = 0;
 
     let html = `
@@ -292,6 +307,7 @@ function generateReport()
         `;
     });
 
+    // Average of all subjects to 2 decimal places, plus the letter grade
     const average =
         total / studentGrades.length;
 

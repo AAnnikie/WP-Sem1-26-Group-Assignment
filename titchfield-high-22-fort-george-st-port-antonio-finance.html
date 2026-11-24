@@ -18,11 +18,13 @@ File Purpose: Financial Accounting and Reporting
 </head>
 <body data-role="Admin Viewer">
 
+    <!-- Page header -->
     <header>
         <h1>School Portal</h1>
         <p>Financial Accounting and Reporting</p>
     </header>
 
+    <!-- Finance navigation and log out -->
     <nav>
     <h2>Finance</h2>
     <ul class="nav-links">
@@ -43,9 +45,11 @@ File Purpose: Financial Accounting and Reporting
     <main class="finance-main">
         <div class="dashboard-content">
 
+            <!-- Ledger: totals, search and status filter, and one row per student -->
             <section id="ledger">
                 <h2>Student Financial Ledger</h2>
 
+                <!-- Totals for tuition, payments and outstanding balance -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <h3>Total Tuition</h3>
@@ -63,6 +67,7 @@ File Purpose: Financial Accounting and Reporting
                     </div>
                 </div>
 
+                <!-- Search by name or ID, and filter by status -->
                 <div class="search-bar">
                     <input type="search" id="studentSearch"
                            placeholder="Search by name or ID">
@@ -93,6 +98,7 @@ File Purpose: Financial Accounting and Reporting
                 </div>
             </section>
             
+            <!-- Record a payment (shown to Admins only) -->
             <section id="payments" hidden>
                 <h2>Record Student Payment</h2>
 
@@ -118,6 +124,7 @@ File Purpose: Financial Accounting and Reporting
                 </form>
             </section>
 
+            <!-- Every payment recorded so far -->
             <section id="paymentHistory">
                 <h2>Payment Transaction History</h2>
 
@@ -138,6 +145,7 @@ File Purpose: Financial Accounting and Reporting
                 </div>
             </section>
 
+            <!-- Printable financial report -->
             <section id="reports">
                 <h2>Financial Reports</h2>
                 <div class="card">
@@ -155,6 +163,7 @@ File Purpose: Financial Accounting and Reporting
         <p>School Portal | Financial Accounting</p>
     </footer>
 
+    <!-- Storage helpers, sample data, ledger logic, then the role check -->
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js"></script>
 <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js"></script>
 <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-finance.js"></script>

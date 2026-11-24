@@ -36,15 +36,18 @@ myForm.addEventListener("submit",function(event){ // Without stopping the "submi
     if (passwordError.textContent !== ""){
         everythingValid = false;
     }
+    // Compare the typed details with the saved logins
     if (everythingValid){
         const logins = load("logins");
         let found = null;
         for (const l of logins){
             if (l.username === usernameBox.value.trim() && l.password === passwordBox.value){
                 found = true;
+                // Saves who logged in for this tab only (W3Schools: "Window sessionStorage")
                 const value  = {role: l.role, username: l.username};
                 const valueAsString = JSON.stringify(value);
                 sessionStorage.setItem("current_user", valueAsString);
+                // Send the user to the dashboard for their role
                 if (l.role === "Admin"){
                     window.location.href = "titchfield-high-22-fort-george-st-port-antonio-admin.html"; // W3Schools: "JavaScript Window Location"
                 }else if(l.role === "Teacher"){
@@ -54,6 +57,7 @@ myForm.addEventListener("submit",function(event){ // Without stopping the "submi
                 }
             }
         }
+        // No matching account: one message, without saying which field was wrong
         if (found === null){
             passwordError.textContent = "Incorrect username or password";
         }

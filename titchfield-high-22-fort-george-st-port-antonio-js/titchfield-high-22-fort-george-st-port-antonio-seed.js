@@ -10,6 +10,7 @@ File Purpose: Fills the fresh page's empty keys with sample records based on the
 */
 
 
+// Sample students: 10 in Semester 1 and 5 in Semester 2
 const studentRegistry=
 [
     {stud_name: "John Doe", stud_id: "A0000", stud_DOB: "2015-10-20", academic_year: "AY26/27", semester: "Semester 1", stud_status: "Active", stud_email:"john.doe@gmail.com", stud_phone: "8764567890", stud_address: "123 Main St, Kingston"},
@@ -29,12 +30,14 @@ const studentRegistry=
     {stud_name: "Hank Schrader", stud_id: "N0013", stud_DOB: "2014-09-12", academic_year: "AY26/27", semester: "Semester 2", stud_status: "Active", stud_email: "hank.s@gmail.com", stud_phone: "8765550104", stud_address: "230 Mango St, Mandeville"},
     {stud_name: "Marie Dore", stud_id: "O0014", stud_DOB: "2013-11-25", academic_year: "AY26/27", semester: "Semester 2", stud_status: "Active", stud_email: "marie.s@gmail.com", stud_phone: "6585550105", stud_address: "67 Orange Rd, Montego Bay"}
 ];
+// One sample login per role
 const logins=
 [   
     {username: "DWade", password: "Whateverfitstheregex_123", role: "Teacher"},
     {username: "James12", password: "Whateverfitstheregex_123", role: "Admin"},
     {username: "Jessie34", password: "Whateverfitstheregex_123", role: "Viewer"}
 ];
+// Subjects offered, with their subject codes
 const subjects= 
 [
     {name: "Mathematics", subject_code: "MAT1"},
@@ -43,6 +46,7 @@ const subjects=
     {name: "Physics", subject_code: "PHY1"},
     {name: "Chemistry", subject_code: "CHM1"}
 ]
+// Which students take each subject, per semester
 const curriculumMapping= 
 [
     {subject_code: "MAT1", stud_id: ["A0000", "D0003", "E0004", "F0005", "H0007"], academic_year: "AY26/27", semester: "Semester 1"},
@@ -57,6 +61,7 @@ const curriculumMapping=
     {subject_code: "PHY1", stud_id: ["M0012", "N0013"], academic_year: "AY26/27", semester: "Semester 2"},
     {subject_code: "CHM1", stud_id: ["N0013", "O0014"], academic_year: "AY26/27", semester: "Semester 2"}
 ]
+// Sample scores for each student and subject
 const grades= 
 [
     {stud_id: "A0000", subject_code: "MAT1", score: 0, academic_year: "AY26/27", semester: "Semester 1"},
@@ -91,6 +96,7 @@ const grades=
     {stud_id: "O0014", subject_code: "CHM1", score: 95, academic_year: "AY26/27", semester: "Semester 2"},
     {stud_id: "O0014", subject_code: "MAT1", score: 77, academic_year: "AY26/27", semester: "Semester 2"},
 ]
+// Sample tuition and balance per student and semester
 const ledger= 
 [
     {stud_id: "A0000", ledger_id: "A1B2C3D4E5F6", academic_year: "AY26/27", semester: "Semester 1", tuition: 60000.00, balance: 60000.00},
@@ -110,6 +116,7 @@ const ledger=
     {stud_id: "N0013", ledger_id: "LDGN0013G7H8", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 15000.00},
     {stud_id: "O0014", ledger_id: "LDGO0014I9J0", academic_year: "AY26/27", semester: "Semester 2", tuition: 60000.00, balance: 0.00}
 ]
+// Only fill a key when it is empty, so saved changes are never overwritten
 if (load("student_registry").length === 0){
     save("student_registry", studentRegistry);
 }

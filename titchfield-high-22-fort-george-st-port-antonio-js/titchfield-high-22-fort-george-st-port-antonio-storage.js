@@ -11,17 +11,20 @@ Prevents members from having to individually parse/stringify code which can brea
 */
 
 
+// Load: reads a key from localStorage and turns the saved text back into an array (W3Schools: "JSON.parse()")
 function load(key){
     const savedText = localStorage.getItem(key);
     if (savedText !== null){
         return JSON.parse(savedText);
     }
+    // Nothing saved under this key yet, so an empty array is returned
     else{
         return [];
     }
 }
 
 
+// Save: turns the array into text and stores it under the key (W3Schools: "JSON.stringify()" and "Window localStorage")
 function save(key, value){
     const valueAsString = JSON.stringify(value);
     localStorage.setItem(key, valueAsString);

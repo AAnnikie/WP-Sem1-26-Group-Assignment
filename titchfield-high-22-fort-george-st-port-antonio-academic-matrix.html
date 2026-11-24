@@ -18,6 +18,7 @@ File Purpose: Academic Matrix
     <link rel="stylesheet" href="titchfield-high-22-fort-george-st-port-antonio-css/titchfield-high-22-fort-george-st-port-antonio-styles.css">
 </head>
 <body data-role="Admin Viewer">
+    <!-- Page header and navigation -->
     <header>
         <nav class="nav-bar">
             <h1>Academic Matrix</h1>
@@ -34,6 +35,7 @@ File Purpose: Academic Matrix
 
     <main>
         <div class="matrix-layout">
+            <!-- Semester filter -->
             <aside class="matrix-side">
                 <h2>Filter</h2>
                 <label for="matrixSemester">Semester:</label>
@@ -44,6 +46,7 @@ File Purpose: Academic Matrix
                 </select>
             </aside>
 
+            <!-- Grade grid, built by admin-grades.js -->
             <section class="matrix-main">
                 <h2 id="matrixTitle"></h2>
                 <p class="error" id="matrixMessage"></p>
@@ -57,6 +60,7 @@ File Purpose: Academic Matrix
         </div>
     </main>
 
+    <!-- Role check, storage helpers, sample data, then the matrix logic -->
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-guard.js"></script>
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js"></script>
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js"></script>

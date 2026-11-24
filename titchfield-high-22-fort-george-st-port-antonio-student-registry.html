@@ -18,6 +18,7 @@ File Purpose: Student Registry
     <link rel="stylesheet" href="titchfield-high-22-fort-george-st-port-antonio-css/titchfield-high-22-fort-george-st-port-antonio-styles.css">
 </head>
 <body data-role="Admin Viewer">
+    <!-- Page header and navigation -->
     <header>
         <nav class="nav-bar">
             <h1>Student Registry</h1>
@@ -33,9 +34,11 @@ File Purpose: Student Registry
     </header>
 
     <main class="container">
+        <!-- Add / edit student form (hidden from Viewers) -->
         <section id="formSection">
             <form id="studentForm" novalidate>
                 <input type="hidden" id="editingStudentId">
+                <!-- Student details -->
                 <fieldset>
                     <legend>Student Information</legend>
                     <div>
@@ -55,6 +58,7 @@ File Purpose: Student Registry
                     </div>
                 </fieldset>
 
+                <!-- Contact details -->
                 <fieldset>
                     <legend>Contact Information</legend>
                     <div>
@@ -74,6 +78,7 @@ File Purpose: Student Registry
                     </div>
                 </fieldset>
 
+                <!-- Enrolment: academic year, semester and status -->
                 <fieldset>
                     <legend>Enrollment Information</legend>
                     <div>
@@ -105,6 +110,7 @@ File Purpose: Student Registry
             </form>
         </section>
 
+        <!-- Registered students table, filtered by semester -->
         <section id="tableSection">
             <h2>Registered Students</h2>
             <div class="filter-bar">
@@ -135,6 +141,7 @@ File Purpose: Student Registry
         </section>
     </main>
 
+    <!-- Role check, storage helpers, sample data, then the registry logic -->
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-guard.js"></script>
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-storage.js"></script>
     <script src="titchfield-high-22-fort-george-st-port-antonio-js/titchfield-high-22-fort-george-st-port-antonio-seed.js"></script>
